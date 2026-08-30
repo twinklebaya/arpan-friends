@@ -4,8 +4,15 @@ from .config import get_settings
 
 settings = get_settings()
 
-connect_args = {"check_same_thread": False} if settings.database_url.startswith("sqlite") else {}
-engine = create_engine(settings.database_url, connect_args=connect_args)
+# SQLAlchemy dropped support for the bare "postgres://" scheme that Supabase
+# (and Heroku, etc.) hand out -- normalize it so a re-copied connection
+# string doesn't silently break the app.
+_db_url = settings.database_url
+if _db_url.startswith("postgres://"):
+    _db_url = _db_url.replace("postgres://", "postgresql://", 1)
+
+connect_args = {"check_same_thread": False} if _db_url.startswith("sqlite") else {}
+engine = create_engine(_db_url, connect_args=connect_args)
 
 
 def create_db_and_tables() -> None:

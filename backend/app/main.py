@@ -16,6 +16,11 @@ app = FastAPI(title="Kailash Journeys Crisis Response API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origin_list,
+    # Vercel gives every preview deployment its own random-hash subdomain
+    # (e.g. arpan-friends-mkl5dgxkp-<team>.vercel.app), so a fixed allowlist
+    # entry breaks on the next deploy. Match any *.vercel.app subdomain
+    # instead of chasing each new preview URL.
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
