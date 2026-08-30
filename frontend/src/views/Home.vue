@@ -17,7 +17,6 @@ onUnmounted(() => store.stopPolling());
 
 <template>
   <div>
-    <EmergencyContacts />
     <HeroSection />
     <section class="mx-auto max-w-5xl px-4 py-6">
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -27,6 +26,7 @@ onUnmounted(() => store.stopPolling());
     </section>
     <LiveFeeds />
     <StatusTables />
+    <EmergencyContacts />
     <ContributionForm />
   </div>
 </template>

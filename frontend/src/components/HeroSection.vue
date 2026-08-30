@@ -36,8 +36,11 @@ function scrollToForm() {
         the Nepal-Tibet border, Rasuwa district. If you have any information — however small —
         please share it below.
       </p>
-      <div class="mt-6">
+      <div class="mt-6 flex flex-wrap items-center gap-4">
         <Button variant="urgent" @click="scrollToForm">Submit Information</Button>
+        <a href="tel:+14087808343" class="text-sm text-gray-300 hover:text-white">
+          Or call/text <span class="font-semibold text-white">+1 (408) 780-8343</span> with any tip
+        </a>
       </div>
 
       <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">

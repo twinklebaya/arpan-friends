@@ -56,7 +56,7 @@ const contactGroups = [
   },
   {
     country: "This site",
-    contacts: [{ label: "Family tip line (direct)", phone: "PLACEHOLDER: +__ …" }],
+    contacts: [{ label: "Family tip line (direct, call or text)", phone: "+1 (408) 780-8343" }],
   },
 ];
 </script>
