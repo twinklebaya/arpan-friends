@@ -36,11 +36,6 @@ function scrollToForm() {
         the Nepal-Tibet border, Rasuwa district. If you have any information — however small —
         please share it below.
       </p>
-      <p class="mt-2 max-w-3xl text-sm text-gray-400">
-        This hub is also open to families and friends of anyone affected by the Nepal-Tibet
-        floods, of any nationality — see the registry and tables further down the page.
-      </p>
-
       <div class="mt-6">
         <Button variant="urgent" @click="scrollToForm">Submit Information</Button>
       </div>
