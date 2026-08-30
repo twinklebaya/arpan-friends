@@ -9,6 +9,9 @@ class StatsOut(BaseModel):
     still_missing_count: int
     confirmed_deceased_count: int
 
+    hub_registered_missing_count: int
+    hub_registered_deceased_count: int
+
     nepal_confirmed_dead: int
     nepal_missing: int
     tibet_confirmed_dead: int

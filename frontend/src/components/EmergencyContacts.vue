@@ -3,14 +3,14 @@
 // of Aug 2026. Sources:
 // - DFAT hotline: Senator Penny Wong, official statement (X/Twitter)
 //   https://x.com/SenatorWong/status/2092865278984192011
-// - Australian Embassy Kathmandu: fetched directly from
-//   https://nepal.embassy.gov.au/kmdu/contact-us.html (email is JS-obfuscated
-//   on that page and couldn't be extracted reliably -- link to the page
-//   instead of guessing an address)
+// - Australian Embassy Kathmandu phone + email: confirmed via the family's
+//   own missing-person flyer for Arpan Kothari (matches the embassy site's
+//   phone number independently fetched earlier)
 // - India MEA control room: corroborated across multiple Indian outlets
 //   (Free Press Journal, Telangana Today, The Tribune, Oneindia, The Federal)
 // - Nepal national hotlines: Nepal Home Ministry (disaster hotline moved
 //   from 1149 to 1234 in July 2026)
+// - Nepal Tourist Police + Nepal Tourism Board hotline: family flyer
 //
 // "Family tip line" is the one placeholder left -- only you can fill in a
 // real direct-to-family contact.
@@ -25,7 +25,7 @@ const contactGroups = [
       {
         label: "Australian Embassy, Kathmandu",
         phone: "+977 1 437 1678",
-        note: "Email/enquiry form: nepal.embassy.gov.au/kmdu/contact-us.html",
+        note: "Email: kathmandu.embassy@dfat.gov.au",
       },
     ],
   },
@@ -47,6 +47,8 @@ const contactGroups = [
     country: "Nepal",
     contacts: [
       { label: "National Disaster Hotline", phone: "1234" },
+      { label: "Nepal Tourist Police (24/7)", phone: "+977 985 128 9445", note: "Also on WhatsApp" },
+      { label: "Nepal Tourism Board — Tourist Assistance (24/7)", phone: "1234 / 1144" },
       { label: "Nepal Police", phone: "100" },
       { label: "Ambulance", phone: "102" },
       { label: "General mobile emergency", phone: "112" },
@@ -61,14 +63,18 @@ const contactGroups = [
 
 <template>
   <section class="bg-urgent-light">
-    <div class="mx-auto max-w-5xl px-4 py-4">
+    <div class="mx-auto max-w-5xl px-4 py-5">
       <p class="text-xs font-semibold uppercase tracking-wide text-urgent">Emergency contacts</p>
-      <div class="mt-2 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
-        <div v-for="group in contactGroups" :key="group.country">
-          <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">
+      <div class="mt-3 grid grid-cols-1 gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+        <div
+          v-for="group in contactGroups"
+          :key="group.country"
+          class="rounded-lg border border-red-100 bg-white p-4 shadow-sm"
+        >
+          <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
             {{ group.country }}
           </p>
-          <div v-for="c in group.contacts" :key="c.label" class="mb-2">
+          <div v-for="c in group.contacts" :key="c.label" class="mb-3 last:mb-0">
             <p class="font-medium text-gray-900">{{ c.label }}</p>
             <p class="text-gray-600">{{ c.phone }}</p>
             <p v-if="c.note" class="text-xs text-gray-500">{{ c.note }}</p>
