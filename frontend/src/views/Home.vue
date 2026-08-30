@@ -24,9 +24,5 @@ onUnmounted(() => store.stopPolling());
     <LiveFeeds />
     <StatusTables />
     <ContributionForm />
-
-    <footer class="mx-auto max-w-5xl px-4 py-6 text-center text-xs text-gray-400">
-      <router-link to="/admin" class="hover:underline">Admin review queue</router-link>
-    </footer>
   </div>
 </template>
