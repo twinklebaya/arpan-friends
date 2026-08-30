@@ -31,6 +31,8 @@ export const api = {
   getGeneralFeed: () => request("/api/feed/general"),
   getTargetFeed: () => request("/api/feed/target"),
   submitTip: (formData) => request("/api/tips", { method: "POST", body: formData }),
+  submitPerson: (payload) =>
+    request("/api/persons/submit", { method: "POST", body: JSON.stringify(payload) }),
 
   // Admin (requires a bearer token from the caller)
   adminRequest: (path, token, options = {}) =>

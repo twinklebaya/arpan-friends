@@ -6,6 +6,11 @@ const store = useCrisisStore();
 
 <template>
   <section class="mx-auto max-w-5xl space-y-8 px-4 py-8">
+    <p class="text-sm text-gray-500">
+      A shared registry for families and friends of anyone affected by the Nepal-Tibet floods, of
+      any nationality. Anyone can add a loved one below — every entry is admin-reviewed before it
+      appears here.
+    </p>
     <div>
       <h2 class="text-lg font-bold text-gray-900">Still Missing</h2>
       <div class="mt-3 overflow-x-auto rounded-lg border border-gray-200">

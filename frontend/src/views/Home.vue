@@ -7,6 +7,7 @@ import EmergencyContacts from "../components/EmergencyContacts.vue";
 import HeroSection from "../components/HeroSection.vue";
 import LiveFeeds from "../components/LiveFeeds.vue";
 import MapSection from "../components/MapSection.vue";
+import RegisterPersonForm from "../components/RegisterPersonForm.vue";
 import StatusTables from "../components/StatusTables.vue";
 import { useCrisisStore } from "../stores/crisis";
 
@@ -23,6 +24,7 @@ onUnmounted(() => store.stopPolling());
     <MapSection />
     <LiveFeeds />
     <StatusTables />
+    <RegisterPersonForm />
     <ContributionForm />
 
     <footer class="mx-auto max-w-5xl px-4 py-6 text-center text-xs text-gray-400">

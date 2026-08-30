@@ -19,9 +19,13 @@ function scrollToForm() {
         Help us find the Kailash Journeys tour group
       </h1>
       <p class="mt-3 max-w-3xl text-gray-300">
-        Six members of the Kailash Journeys tour group have been missing since the flash floods
-        near the Gyirong border crossing, Rasuwa district. If you have any information — however
-        small — please share it below.
+        Members of the Kailash Journeys tour group have been missing since the flash floods near
+        the Nepal-Tibet border, Rasuwa district. If you have any information — however small —
+        please share it below.
+      </p>
+      <p class="mt-2 max-w-3xl text-sm text-gray-400">
+        This hub is also open to families and friends of anyone affected by the Nepal-Tibet
+        floods, of any nationality — see the registry and tables further down the page.
       </p>
 
       <div class="mt-6">

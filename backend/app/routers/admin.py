@@ -17,7 +17,7 @@ from ..models import (
     SourceUpdate,
     Tip,
 )
-from ..schemas import PersonUpdateIn, ReviewAction, SourceUpdateIn, StatsUpdateIn
+from ..schemas import PersonCreateIn, PersonUpdateIn, ReviewAction, SourceUpdateIn, StatsUpdateIn
 from ..services.openrouter import classify_source_update
 
 router = APIRouter(prefix="/api/admin", tags=["admin"], dependencies=[Depends(require_admin)])
@@ -161,7 +161,46 @@ def review_source_update(update_id: int, action: ReviewAction, session: Session 
     return {"ok": True, "status": update.review_status}
 
 
+# ---------- Public person-submission review queue ----------
+
+@router.get("/persons")
+def list_persons_admin(
+    review_status: Optional[ReviewStatus] = None, session: Session = Depends(get_session)
+):
+    query = select(Person)
+    if review_status:
+        query = query.where(Person.review_status == review_status)
+    return session.exec(query.order_by(Person.created_at.desc())).all()
+
+
+@router.patch("/persons/{person_id}/review")
+def review_person(person_id: int, action: ReviewAction, session: Session = Depends(get_session)):
+    person = session.get(Person, person_id)
+    if not person:
+        raise HTTPException(404, "Person not found")
+    if person.review_status != ReviewStatus.pending:
+        raise HTTPException(400, "Already reviewed")
+
+    person.review_status = ReviewStatus.approved if action.action == "approve" else ReviewStatus.rejected
+    if person.status == PersonStatus.deceased:
+        person.photo_url = None  # hard-enforce even on a freshly-approved public submission
+    person.updated_at = datetime.utcnow()
+
+    session.add(person)
+    session.commit()
+    return {"ok": True, "review_status": person.review_status}
+
+
 # ---------- Manual person + stats edits (fallback / corrections) ----------
+
+@router.post("/persons")
+def create_person(payload: PersonCreateIn, session: Session = Depends(get_session)):
+    person = Person(**payload.model_dump())
+    session.add(person)
+    session.commit()
+    session.refresh(person)
+    return person
+
 
 @router.patch("/persons/{person_id}")
 def update_person(person_id: int, payload: PersonUpdateIn, session: Session = Depends(get_session)):

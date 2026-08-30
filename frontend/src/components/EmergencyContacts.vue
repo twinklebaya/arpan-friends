@@ -1,10 +1,61 @@
 <script setup>
-// PLACEHOLDER contacts -- replace every number below with a verified,
-// real hotline before this goes live. Do not publish invented numbers.
-const contacts = [
-  { label: "Australian Department of Foreign Affairs (DFAT) 24hr Consular Emergency", phone: "PLACEHOLDER: +61 …" },
-  { label: "Nepalese Rasuwa District Authority / Police", phone: "PLACEHOLDER: +977 …" },
-  { label: "Family tip line (direct)", phone: "PLACEHOLDER: +__ …" },
+// All numbers below verified against official/government-linked sources as
+// of Aug 2026. Sources:
+// - DFAT hotline: Senator Penny Wong, official statement (X/Twitter)
+//   https://x.com/SenatorWong/status/2092865278984192011
+// - Australian Embassy Kathmandu: fetched directly from
+//   https://nepal.embassy.gov.au/kmdu/contact-us.html (email is JS-obfuscated
+//   on that page and couldn't be extracted reliably -- link to the page
+//   instead of guessing an address)
+// - India MEA control room: corroborated across multiple Indian outlets
+//   (Free Press Journal, Telangana Today, The Tribune, Oneindia, The Federal)
+// - Nepal national hotlines: Nepal Home Ministry (disaster hotline moved
+//   from 1149 to 1234 in July 2026)
+//
+// "Family tip line" is the one placeholder left -- only you can fill in a
+// real direct-to-family contact.
+const contactGroups = [
+  {
+    country: "Australia",
+    contacts: [
+      {
+        label: "DFAT 24hr Consular Emergency Centre",
+        phone: "1300 555 135 (within Australia) / +61 2 6261 3305 (overseas)",
+      },
+      {
+        label: "Australian Embassy, Kathmandu",
+        phone: "+977 1 437 1678",
+        note: "Email/enquiry form: nepal.embassy.gov.au/kmdu/contact-us.html",
+      },
+    ],
+  },
+  {
+    country: "India",
+    contacts: [
+      {
+        label: "MEA 24x7 Control Room (New Delhi)",
+        phone: "+91 11 2308 8718 / +91 11 2308 8719",
+        note: "WhatsApp: +91 99682 91988 · Email: situationroom@mea.gov.in",
+      },
+      {
+        label: "Indian Embassy, Kathmandu (also on WhatsApp)",
+        phone: "+977 985 131 6807 / +977 970 910 7500 / +977 981 032 6117",
+      },
+    ],
+  },
+  {
+    country: "Nepal",
+    contacts: [
+      { label: "National Disaster Hotline", phone: "1234" },
+      { label: "Nepal Police", phone: "100" },
+      { label: "Ambulance", phone: "102" },
+      { label: "General mobile emergency", phone: "112" },
+    ],
+  },
+  {
+    country: "This site",
+    contacts: [{ label: "Family tip line (direct)", phone: "PLACEHOLDER: +__ …" }],
+  },
 ];
 </script>
 
@@ -12,10 +63,16 @@ const contacts = [
   <section class="bg-urgent-light">
     <div class="mx-auto max-w-5xl px-4 py-4">
       <p class="text-xs font-semibold uppercase tracking-wide text-urgent">Emergency contacts</p>
-      <div class="mt-2 grid grid-cols-1 gap-2 text-sm sm:grid-cols-3">
-        <div v-for="c in contacts" :key="c.label">
-          <p class="font-medium text-gray-900">{{ c.label }}</p>
-          <p class="text-gray-600">{{ c.phone }}</p>
+      <div class="mt-2 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
+        <div v-for="group in contactGroups" :key="group.country">
+          <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-500">
+            {{ group.country }}
+          </p>
+          <div v-for="c in group.contacts" :key="c.label" class="mb-2">
+            <p class="font-medium text-gray-900">{{ c.label }}</p>
+            <p class="text-gray-600">{{ c.phone }}</p>
+            <p v-if="c.note" class="text-xs text-gray-500">{{ c.note }}</p>
+          </div>
         </div>
       </div>
     </div>

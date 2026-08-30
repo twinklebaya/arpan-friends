@@ -28,6 +28,7 @@ class ReviewStatus(str, Enum):
 class SourceType(str, Enum):
     official = "official"  # Nepalese/Indian/Australian government or embassy statement
     news_media = "news_media"  # established news wire/outlet
+    family = "family"  # firsthand family account, e.g. location data, direct interview
     social_media = "social_media"  # X/Twitter etc. -- unverified, lower trust
     other = "other"
 
@@ -43,8 +44,14 @@ class Person(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str
     age: Optional[int] = None
-    is_primary_target: bool = False  # the 6 Kailash Journeys individuals
+    is_primary_target: bool = False  # the Kailash Journeys individuals (hero + target feed)
     status: PersonStatus = PersonStatus.missing
+
+    # Entries created by admins/ingestion default to approved. Public
+    # submissions (any family registering a missing/deceased loved one from
+    # any nationality) start pending and only appear in the public tables
+    # once an admin approves them -- same review-gate philosophy as tips.
+    review_status: ReviewStatus = ReviewStatus.approved
 
     last_seen_location: str = ""
     found_location: Optional[str] = None
@@ -56,6 +63,12 @@ class Person(SQLModel, table=True):
     source_name: Optional[str] = None
     source_url: Optional[str] = None
     confirmed_at: Optional[datetime] = None
+
+    # Submitter contact info, for admin follow-up only -- never exposed via
+    # any public endpoint.
+    submitted_by_name: Optional[str] = None
+    submitted_by_email: Optional[str] = None
+    submitted_by_phone: Optional[str] = None
 
     created_at: datetime = Field(default_factory=utcnow)
     updated_at: datetime = Field(default_factory=utcnow)
@@ -120,14 +133,32 @@ class Tip(SQLModel, table=True):
 
 
 class CrisisStats(SQLModel, table=True):
-    """Single-row table of group-wide tallies, editable by admins or via an
-    approved SourceUpdate. Not derived from Person counts because these
-    numbers (e.g. total group size, official rescued count) come from
-    authorities and may not map 1:1 to individually-tracked Person rows.
+    """Single-row table of two distinct kinds of tallies:
+
+    1. Official disaster-wide toll (nepal_*/tibet_* fields) -- aggregate
+       figures from government/news sources, covering everyone affected
+       across all nationalities, not just people named on this site.
+    2. Kailash Journeys group-specific tallies (total_group_members,
+       official_rescued_count) -- kept separate because they come from
+       authorities and don't map 1:1 to individually-tracked Person rows.
+
+    The site's own "still missing" / "confirmed deceased" counters (shown
+    alongside these) are computed live from the Person table instead, since
+    that table is a growing, admin-moderated registry that any family can
+    add their loved one to -- it's expected to diverge from the official
+    toll rather than duplicate it.
     """
 
     id: Optional[int] = Field(default=None, primary_key=True)
+
+    nepal_confirmed_dead: int = 0
+    nepal_missing: int = 0
+    tibet_confirmed_dead: int = 0
+    tibet_missing: int = 0
+    total_rescued: int = 0
+
     total_group_members: int = 0
     official_rescued_count: int = 0
+
     note: Optional[str] = None
     updated_at: datetime = Field(default_factory=utcnow)
