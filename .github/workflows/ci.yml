@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  frontend-build:
+    name: Frontend build (Vue/Vite)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+      - run: npm run build
+
+  backend-import-check:
+    name: Backend import check (FastAPI)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - run: python -c "from app.main import app; print('FastAPI app imported OK, routes:', len(app.routes))"
+
+  vercel-preview-deploy:
+    name: Deploy Vercel preview
+    needs: frontend-build
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' && vars.VERCEL_PROJECT_ID != '' }}
+    defaults:
+      run:
+        working-directory: frontend
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install --global vercel@latest
+      - run: vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+      - run: vercel build --token=$VERCEL_TOKEN
+      - run: vercel deploy --prebuilt --token=$VERCEL_TOKEN
