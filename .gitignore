@@ -13,3 +13,10 @@ frontend/.env
 frontend/.env.local
 
 .DS_Store
+
+# Loose photo drops at the repo root (e.g. "Arpan Mithalal Kothari.jpeg") --
+# canonical copies live in frontend/public/photos/ instead.
+/*.jpg
+/*.jpeg
+/*.png
+/*.heic

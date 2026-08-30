@@ -74,6 +74,7 @@ class PersonUpdateIn(BaseModel):
     age: Optional[int] = None
     is_primary_target: Optional[bool] = None
     status: Optional[PersonStatus] = None
+    photo_url: Optional[str] = None
     found_location: Optional[str] = None
     physical_markers: Optional[str] = None
     last_seen_location: Optional[str] = None
