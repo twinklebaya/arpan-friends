@@ -57,5 +57,25 @@ const store = useCrisisStore();
       <p v-if="store.stats?.note" class="mt-2 text-center text-xs text-gray-400">
         {{ store.stats.note }}
       </p>
+      <p class="mt-2 text-center text-xs text-gray-400">
+        Sources:
+        <a
+          href="https://en.wikipedia.org/wiki/2026_Nepal_floods"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-600 hover:underline"
+        >
+          Wikipedia, "2026 Nepal floods"
+        </a>
+        ·
+        <a
+          href="https://www.abc.net.au/news/2026-08-30/thousands-missing-after-nepal-tibet-floods/107093900"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-600 hover:underline"
+        >
+          ABC News
+        </a>
+      </p>
   </Card>
 </template>
