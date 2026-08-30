@@ -40,10 +40,6 @@ const store = useCrisisStore();
 
     <div>
       <h2 class="text-lg font-bold text-gray-900">Confirmed Deceased</h2>
-      <p class="mt-1 text-xs text-gray-500">
-        Entries here are only added once an admin approves an official-source confirmation. No
-        photographs are displayed in this table.
-      </p>
       <div class="mt-3 overflow-x-auto rounded-lg border border-gray-200">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
           <thead class="bg-gray-50">

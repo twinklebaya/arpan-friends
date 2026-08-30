@@ -69,6 +69,7 @@ class PersonSubmitIn(BaseModel):
 class PersonUpdateIn(BaseModel):
     name: Optional[str] = None
     age: Optional[int] = None
+    is_primary_target: Optional[bool] = None
     status: Optional[PersonStatus] = None
     found_location: Optional[str] = None
     physical_markers: Optional[str] = None

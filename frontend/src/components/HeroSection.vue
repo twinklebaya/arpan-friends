@@ -1,8 +1,21 @@
 <script setup>
+import { computed } from "vue";
+
 import { useCrisisStore } from "../stores/crisis";
 import Button from "./ui/Button.vue";
 
 const store = useCrisisStore();
+
+// Only these three get a photo card -- the rest of the primary-target
+// roster is listed as text underneath instead.
+const PHOTO_NAMES = ["Arpan Mithalal Kothari", "Karan Bhardwaj", "Bhavinkumar Rajnikant Raval"];
+
+const photoPeople = computed(() =>
+  store.primaryTargets.filter((p) => PHOTO_NAMES.includes(p.name)),
+);
+const otherPeople = computed(() =>
+  store.primaryTargets.filter((p) => !PHOTO_NAMES.includes(p.name)),
+);
 
 function scrollToForm() {
   document.getElementById("contribute")?.scrollIntoView({ behavior: "smooth" });
@@ -34,7 +47,7 @@ function scrollToForm() {
 
       <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
         <div
-          v-for="person in store.primaryTargets"
+          v-for="person in photoPeople"
           :key="person.id"
           class="overflow-hidden rounded-lg bg-gray-800"
         >
@@ -53,6 +66,17 @@ function scrollToForm() {
             <p class="text-xs text-gray-400">Age {{ person.age ?? "unknown" }}</p>
           </div>
         </div>
+      </div>
+
+      <div v-if="otherPeople.length" class="mt-6 border-t border-gray-700 pt-4">
+        <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">
+          Also missing from the same tour group
+        </p>
+        <ul class="mt-2 space-y-1 text-sm text-gray-300">
+          <li v-for="person in otherPeople" :key="person.id">
+            {{ person.name }} <span class="text-gray-500">(age {{ person.age ?? "unknown" }})</span>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
