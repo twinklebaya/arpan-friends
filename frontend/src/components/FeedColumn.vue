@@ -17,11 +17,11 @@ function sourceTone(sourceType) {
 function sourceLabel(sourceType) {
   return (
     {
-      official: "Official source",
-      news_media: "News media",
-      family: "Family account",
+      official: "Official",
+      news_media: "News",
+      family: "Family",
       social_media: "Social media — unverified",
-      other: "Other source",
+      other: "Other",
       tip: "Public tip",
     }[sourceType] || "Source"
   );

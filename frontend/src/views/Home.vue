@@ -26,7 +26,11 @@ onUnmounted(() => store.stopPolling());
     </section>
     <LiveFeeds />
     <StatusTables />
-    <EmergencyContacts />
-    <ContributionForm />
+    <section class="bg-urgent-light py-8">
+      <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 px-4 lg:grid-cols-2">
+        <EmergencyContacts />
+        <ContributionForm />
+      </div>
+    </section>
   </div>
 </template>
