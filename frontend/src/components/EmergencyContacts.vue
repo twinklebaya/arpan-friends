@@ -57,7 +57,7 @@ const contactGroups = [
 <template>
   <div>
     <p class="text-xs font-semibold uppercase tracking-wide text-urgent">Emergency contacts</p>
-    <div class="mt-3 grid max-h-72 grid-cols-1 gap-3 overflow-y-auto text-sm">
+    <div class="mt-3 grid grid-cols-1 gap-3 text-sm">
       <div
         v-for="group in contactGroups"
         :key="group.country"
