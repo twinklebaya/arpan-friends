@@ -9,6 +9,20 @@ const expandedId = ref(null);
 function toggle(id) {
   expandedId.value = expandedId.value === id ? null : id;
 }
+
+const copiedId = ref(null);
+async function copyLink(anchorId) {
+  const url = `${window.location.origin}${window.location.pathname}#${anchorId}`;
+  try {
+    await navigator.clipboard.writeText(url);
+    copiedId.value = anchorId;
+    setTimeout(() => {
+      if (copiedId.value === anchorId) copiedId.value = null;
+    }, 2000);
+  } catch {
+    // clipboard API unavailable -- silently ignore, the anchor link still works if shared manually
+  }
+}
 </script>
 
 <template>
@@ -18,8 +32,20 @@ function toggle(id) {
       any nationality. Anyone can add a loved one below — every entry is admin-reviewed before it
       appears here.
     </p>
-    <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
-      <h2 class="text-lg font-bold text-gray-900">Still Missing</h2>
+    <div
+      id="still-missing"
+      class="scroll-mt-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5"
+    >
+      <div class="flex items-center justify-between gap-2">
+        <h2 class="text-lg font-bold text-gray-900">Still Missing</h2>
+        <button
+          type="button"
+          class="text-xs font-medium text-blue-600 hover:underline"
+          @click="copyLink('still-missing')"
+        >
+          {{ copiedId === "still-missing" ? "Link copied!" : "Share this list" }}
+        </button>
+      </div>
       <div class="mt-3 overflow-x-auto rounded-lg border border-gray-200">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
           <thead class="bg-gray-50">
@@ -45,8 +71,20 @@ function toggle(id) {
       </div>
     </div>
 
-    <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
-      <h2 class="text-lg font-bold text-gray-900">Confirmed Deceased</h2>
+    <div
+      id="confirmed-deceased"
+      class="scroll-mt-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5"
+    >
+      <div class="flex items-center justify-between gap-2">
+        <h2 class="text-lg font-bold text-gray-900">Confirmed Deceased</h2>
+        <button
+          type="button"
+          class="text-xs font-medium text-blue-600 hover:underline"
+          @click="copyLink('confirmed-deceased')"
+        >
+          {{ copiedId === "confirmed-deceased" ? "Link copied!" : "Share this list" }}
+        </button>
+      </div>
       <p class="mt-1 text-xs text-gray-500">Click a name to see distinct physical markers.</p>
       <div class="mt-3 divide-y divide-gray-100 rounded-lg border border-gray-200">
         <div v-for="p in store.confirmedDeceased" :key="p.id">
