@@ -57,7 +57,8 @@ class Person(SQLModel, table=True):
     found_location: Optional[str] = None
     physical_markers: str = ""
 
-    photo_url: Optional[str] = None  # only ever shown while status == missing
+    photo_url: Optional[str] = None  # primary photo -- only ever shown while status == missing
+    photo_urls: str = "[]"  # JSON-encoded list of additional photo URLs, same hide-if-deceased rule
 
     # Populated only when a deceased-status SourceUpdate is admin-approved.
     source_name: Optional[str] = None

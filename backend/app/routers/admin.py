@@ -209,9 +209,12 @@ def update_person(person_id: int, payload: PersonUpdateIn, session: Session = De
         raise HTTPException(404, "Person not found")
 
     for field, value in payload.model_dump(exclude_unset=True).items():
+        if field == "photo_urls":
+            value = json.dumps(value)
         setattr(person, field, value)
     if person.status == PersonStatus.deceased:
         person.photo_url = None  # hard-enforce here too, in case of manual edits
+        person.photo_urls = "[]"
     person.updated_at = datetime.utcnow()
 
     session.add(person)

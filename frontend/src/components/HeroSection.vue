@@ -64,6 +64,18 @@ function scrollToForm() {
           <div class="p-3">
             <p class="truncate text-sm font-semibold">{{ person.name }}</p>
             <p class="text-xs text-gray-400">Age {{ person.age ?? "unknown" }}</p>
+            <div v-if="person.photo_urls?.length" class="mt-2 flex gap-1.5">
+              <a
+                v-for="url in person.photo_urls"
+                :key="url"
+                :href="url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block h-8 w-8 overflow-hidden rounded border border-gray-600"
+              >
+                <img :src="url" :alt="`${person.name} — additional photo`" loading="lazy" class="h-full w-full object-cover" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

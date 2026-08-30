@@ -1,4 +1,4 @@
-from typing import Literal, Optional
+from typing import List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
@@ -75,6 +75,7 @@ class PersonUpdateIn(BaseModel):
     is_primary_target: Optional[bool] = None
     status: Optional[PersonStatus] = None
     photo_url: Optional[str] = None
+    photo_urls: Optional[List[str]] = None
     found_location: Optional[str] = None
     physical_markers: Optional[str] = None
     last_seen_location: Optional[str] = None
