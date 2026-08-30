@@ -32,6 +32,10 @@ onMounted(() => {
       `<strong>Last known location</strong><br/>${LAST_KNOWN_LOCATION.label}<br/>` +
         `${LAST_KNOWN_LOCATION.lat.toFixed(4)}, ${LAST_KNOWN_LOCATION.lng.toFixed(4)}<br/>` +
         `<span style="color:#b91c1c">${LAST_KNOWN_LOCATION.note}</span>`,
+      // Leaflet's default popup width (up to 300px) doesn't fit a narrow
+      // mobile map -- without a tighter cap it overflows this card and
+      // gets clipped unreadable by the rounded-corner wrapper below.
+      { maxWidth: 200 },
     )
     .openPopup();
 });

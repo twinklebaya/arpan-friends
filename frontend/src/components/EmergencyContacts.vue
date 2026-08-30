@@ -65,7 +65,10 @@ const contactGroups = [
   <section class="bg-urgent-light">
     <div class="mx-auto max-w-5xl px-4 py-5">
       <p class="text-xs font-semibold uppercase tracking-wide text-urgent">Emergency contacts</p>
-      <div class="mt-3 grid grid-cols-1 gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+      <p class="mt-0.5 text-xs text-gray-500 sm:hidden">Scroll for all countries ↓</p>
+      <div
+        class="mt-3 grid max-h-72 grid-cols-1 gap-3 overflow-y-auto text-sm sm:max-h-none sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4"
+      >
         <div
           v-for="group in contactGroups"
           :key="group.country"

@@ -26,7 +26,7 @@ const store = useCrisisStore();
         </div>
       </div>
 
-      <div class="mt-4 grid grid-cols-2 gap-3 border-t border-gray-100 pt-4 sm:grid-cols-5">
+      <div class="mt-4 grid grid-cols-3 gap-3 border-t border-gray-100 pt-4 sm:grid-cols-5">
         <div class="rounded-md border border-gray-100 p-2 text-center">
           <p class="text-lg font-bold text-gray-900">{{ store.stats?.nepal_confirmed_dead ?? "–" }}</p>
           <p class="text-xs text-gray-500">Dead (Nepal)</p>
