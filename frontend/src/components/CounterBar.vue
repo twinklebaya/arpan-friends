@@ -6,8 +6,7 @@ const store = useCrisisStore();
 </script>
 
 <template>
-  <section class="mx-auto max-w-5xl px-4 py-6">
-    <Card class="p-5 sm:p-6">
+  <Card class="h-full p-5 sm:p-6">
       <p class="text-center text-xs font-semibold uppercase tracking-wide text-gray-500">
         Official toll — all nationalities, Nepal + Tibet
       </p>
@@ -58,6 +57,5 @@ const store = useCrisisStore();
       <p v-if="store.stats?.note" class="mt-2 text-center text-xs text-gray-400">
         {{ store.stats.note }}
       </p>
-    </Card>
-  </section>
+  </Card>
 </template>

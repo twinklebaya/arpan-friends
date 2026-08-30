@@ -42,16 +42,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="mx-auto max-w-5xl px-4 py-6">
-    <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
-      <h2 class="text-lg font-bold text-gray-900">Last Known Location</h2>
-      <p class="mt-1 text-sm text-gray-500">{{ LAST_KNOWN_LOCATION.note }}</p>
-      <div class="mt-3 overflow-hidden rounded-lg border border-gray-200">
-        <div ref="mapContainer" class="leaflet-map"></div>
-      </div>
-      <p class="mt-2 text-xs text-gray-500">
-        Coordinates: {{ LAST_KNOWN_LOCATION.lat.toFixed(4) }}, {{ LAST_KNOWN_LOCATION.lng.toFixed(4) }}
-      </p>
+  <div class="h-full rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
+    <h2 class="text-lg font-bold text-gray-900">Last Known Location</h2>
+    <p class="mt-1 text-sm text-gray-500">{{ LAST_KNOWN_LOCATION.note }}</p>
+    <div class="mt-3 overflow-hidden rounded-lg border border-gray-200">
+      <div ref="mapContainer" class="leaflet-map"></div>
     </div>
-  </section>
+    <p class="mt-2 text-xs text-gray-500">
+      Coordinates: {{ LAST_KNOWN_LOCATION.lat.toFixed(4) }}, {{ LAST_KNOWN_LOCATION.lng.toFixed(4) }}
+    </p>
+  </div>
 </template>

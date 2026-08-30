@@ -19,8 +19,12 @@ onUnmounted(() => store.stopPolling());
   <div>
     <EmergencyContacts />
     <HeroSection />
-    <CounterBar />
-    <MapSection />
+    <section class="mx-auto max-w-5xl px-4 py-6">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <CounterBar />
+        <MapSection />
+      </div>
+    </section>
     <LiveFeeds />
     <StatusTables />
     <ContributionForm />
