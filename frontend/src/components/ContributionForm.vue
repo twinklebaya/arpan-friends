@@ -45,7 +45,8 @@ async function onSubmit() {
 </script>
 
 <template>
-  <section id="contribute" class="mx-auto max-w-3xl px-4 py-8">
+  <section id="contribute" class="bg-urgent-light py-8">
+    <div class="mx-auto max-w-3xl px-4">
     <h2 class="text-lg font-bold text-gray-900">Submit Information</h2>
     <p class="mt-1 text-sm text-gray-500">
       Share anything you know — a sighting, a survivor account, a photo. Every submission is
@@ -128,5 +129,6 @@ async function onSubmit() {
         </Button>
       </form>
     </Card>
+    </div>
   </section>
 </template>
