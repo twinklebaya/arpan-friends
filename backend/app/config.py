@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     admin_token: str = "change-me"
 
     openrouter_api_key: str = ""
-    openrouter_model: str = "openai/gpt-4o-mini"
+    openrouter_model: str = "openrouter/free"
 
     cors_origins: str = "http://localhost:5173"
 
