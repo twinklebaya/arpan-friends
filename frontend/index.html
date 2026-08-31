@@ -29,7 +29,37 @@
     <meta name="twitter:image" content="https://findingarpan.vercel.app/photos/site-preview.jpg" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!--
+        Static fallback content: Vue replaces everything inside #app the
+        instant it mounts in a real browser, so this has zero effect on the
+        interactive site. It exists purely for tools that fetch this page
+        without executing JavaScript (many AI link-summarizers, simple
+        scrapers, some crawlers) -- without it, they see an empty shell
+        and nothing else, since the entire real site is client-rendered.
+      -->
+      <main style="font-family: system-ui, sans-serif; max-width: 640px; margin: 0 auto; padding: 24px; line-height: 1.6;">
+        <h1>Help us find Arpan, Bhavin and Karan</h1>
+        <p>
+          Arpan Mithalal Kothari (40), Karan Bhardwaj (40), and Bhavinkumar Rajnikant Raval (41)
+          have been missing since the Aug 26, 2026 Nepal-Tibet flash floods near the Rasuwagadhi
+          border crossing, Rasuwa district, Nepal, along with the rest of their Kailash Journeys
+          tour group.
+        </p>
+        <p>
+          This site is a live, interactive hub with photos, a map of the last known location,
+          continuously updated news feeds (general disaster updates and group-specific updates),
+          a status registry, local resources (hospitals, shelters, survivor leads), and a form to
+          submit any information. It requires JavaScript to display that content &mdash; please
+          visit <a href="https://findingarpan.vercel.app/">https://findingarpan.vercel.app/</a>
+          directly in a browser to see it.
+        </p>
+        <p>
+          <strong>If you have any information, however small:</strong> use the "Submit
+          Information" form on the site, or call/text +1 (408) 780-8343 or +1 (657) 522-1011.
+        </p>
+      </main>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
