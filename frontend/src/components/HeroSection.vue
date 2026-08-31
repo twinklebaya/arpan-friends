@@ -29,12 +29,13 @@ function scrollToForm() {
         Active search — Nepal flash floods
       </p>
       <h1 class="mt-2 text-2xl font-bold leading-tight sm:text-4xl">
-        Help us find the Kailash Journeys tour group
+        Help us find my cousin Arpan and his friends
       </h1>
       <p class="mt-3 max-w-3xl text-gray-300">
-        Members of the Kailash Journeys tour group have been missing since the flash floods near
-        the Nepal-Tibet border, Rasuwa district. If you have any information — however small —
-        please share it below.
+        Arpan Kothari, Karan Bhardwaj, and Bhavinkumar Raval have been missing, along with the
+        rest of their Kailash Journeys tour group, since the flash floods near the Nepal-Tibet
+        border, Rasuwa district. If you have any information — however small — please share it
+        below.
       </p>
       <div class="mt-6 flex flex-wrap items-center gap-4">
         <Button variant="urgent" @click="scrollToForm">Submit Information</Button>
