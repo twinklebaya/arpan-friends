@@ -12,7 +12,7 @@ function toBullets(text) {
   if (!text) return [];
   return text
     .split(/(?<=[.!?])\s+(?=[A-Z0-9(])/)
-    .map((s) => s.trim())
+    .map((s) => s.trim().replace(/^\(\d+\)\s*/, ""))
     .filter(Boolean);
 }
 
