@@ -5,6 +5,17 @@ import { useCrisisStore } from "../stores/crisis";
 
 const store = useCrisisStore();
 
+// Splits a free-text field into sentence-ish chunks so long paragraphs
+// (e.g. a reconstructed timeline) read as scannable bullet points instead
+// of one dense block of text.
+function toBullets(text) {
+  if (!text) return [];
+  return text
+    .split(/(?<=[.!?])\s+(?=[A-Z0-9(])/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 const copiedId = ref(null);
 async function copyLink(anchorId) {
   const url = `${window.location.origin}${window.location.pathname}#${anchorId}`;
@@ -47,13 +58,19 @@ async function copyLink(anchorId) {
             <p class="text-xs font-medium uppercase tracking-wide text-gray-400">
               Last Seen Location
             </p>
-            <p class="text-gray-700">{{ p.last_seen_location || "—" }}</p>
+            <ul v-if="p.last_seen_location" class="mt-1 list-disc space-y-1 pl-4 text-gray-700">
+              <li v-for="(line, i) in toBullets(p.last_seen_location)" :key="i">{{ line }}</li>
+            </ul>
+            <p v-else class="text-gray-700">—</p>
           </div>
           <div>
             <p class="text-xs font-medium uppercase tracking-wide text-gray-400">
               Distinct Physical Markers
             </p>
-            <p class="text-gray-700">{{ p.physical_markers || "—" }}</p>
+            <ul v-if="p.physical_markers" class="mt-1 list-disc space-y-1 pl-4 text-gray-700">
+              <li v-for="(line, i) in toBullets(p.physical_markers)" :key="i">{{ line }}</li>
+            </ul>
+            <p v-else class="text-gray-700">—</p>
           </div>
         </div>
       </div>
