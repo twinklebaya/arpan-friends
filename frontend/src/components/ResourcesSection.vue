@@ -45,7 +45,7 @@ const peopleToConnect = [
     <h2 class="text-lg font-bold uppercase tracking-wide text-gray-900">Resources</h2>
     <div class="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-        <h3 class="text-sm font-semibold text-gray-900">People We Want to Connect With</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-gray-900">People We Want to Connect With</h3>
         <p class="mt-1 text-xs text-gray-500">
           Named survivors from public reporting near the same area and time. Leads to follow up on,
           not confirmed contacts.
@@ -60,7 +60,7 @@ const peopleToConnect = [
       </div>
 
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-        <h3 class="text-sm font-semibold text-gray-900">Hospitals</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-gray-900">Hospitals</h3>
         <ul class="mt-2 space-y-2 text-sm">
           <li v-for="h in hospitals" :key="h.label">
             <a
@@ -77,7 +77,7 @@ const peopleToConnect = [
       </div>
 
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-        <h3 class="text-sm font-semibold text-gray-900">Shelters</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-gray-900">Shelters</h3>
         <ul class="mt-2 space-y-2 text-sm">
           <li v-for="s in shelters" :key="s.label">
             <a
@@ -94,7 +94,7 @@ const peopleToConnect = [
       </div>
 
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-        <h3 class="text-sm font-semibold text-gray-900">Bus Providers</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wide text-gray-900">Bus Providers</h3>
         <ul class="mt-2 space-y-2 text-sm">
           <li v-for="b in busProviders" :key="b.name">
             <p class="font-medium text-gray-800">{{ b.name }}</p>

@@ -48,7 +48,7 @@ function formatTime(iso) {
 
 <template>
   <div>
-    <h3 class="mb-3 text-base font-bold text-gray-900">{{ title }}</h3>
+    <h3 class="mb-3 text-base font-bold uppercase tracking-wide text-gray-900">{{ title }}</h3>
     <div class="max-h-[28rem] space-y-3 overflow-y-auto pr-1">
       <Card v-for="item in items" :key="item.id" class="p-4">
         <div class="flex items-start justify-between gap-2">
