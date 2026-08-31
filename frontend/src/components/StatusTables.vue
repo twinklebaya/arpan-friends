@@ -22,10 +22,6 @@ async function copyLink(anchorId) {
 
 <template>
   <section class="mx-auto max-w-5xl space-y-6 px-4 py-6">
-    <p class="text-sm text-gray-500">
-      A shared registry for families and friends of anyone affected by the Nepal-Tibet floods, of
-      any nationality.
-    </p>
     <div
       id="still-missing"
       class="scroll-mt-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5"

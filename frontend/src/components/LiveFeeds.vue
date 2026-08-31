@@ -8,9 +8,6 @@ const store = useCrisisStore();
 <template>
   <section class="mx-auto max-w-5xl px-4 py-6">
     <h2 class="text-lg font-bold text-gray-900">Live Updates</h2>
-    <p class="mt-1 text-sm text-gray-500">
-      Updates are reviewed by an admin before publishing and refresh automatically.
-    </p>
     <div class="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
         <FeedColumn
