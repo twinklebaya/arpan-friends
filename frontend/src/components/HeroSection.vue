@@ -11,7 +11,7 @@ function scrollToForm() {
 
 <template>
   <section class="bg-gray-900 text-white">
-    <div class="mx-auto max-w-5xl px-4 py-10 sm:py-14">
+    <div class="mx-auto max-w-5xl px-4 pt-10 sm:pt-14">
       <p class="text-sm font-semibold uppercase tracking-wide text-red-400">
         Active search: Nepal flash floods
       </p>
