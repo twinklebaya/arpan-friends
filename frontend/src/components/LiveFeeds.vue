@@ -18,7 +18,7 @@ const store = useCrisisStore();
       </div>
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
         <FeedColumn
-          title="Kailash Journeys Group Updates"
+          title="Important Updates"
           :items="store.targetFeed"
           empty-text="No group-specific updates yet."
         />
