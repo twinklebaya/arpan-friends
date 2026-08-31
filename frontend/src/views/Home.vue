@@ -3,10 +3,10 @@ import { onUnmounted } from "vue";
 
 import ContributionForm from "../components/ContributionForm.vue";
 import CounterBar from "../components/CounterBar.vue";
-import EmergencyContacts from "../components/EmergencyContacts.vue";
 import HeroSection from "../components/HeroSection.vue";
 import LiveFeeds from "../components/LiveFeeds.vue";
 import MapSection from "../components/MapSection.vue";
+import PhotoGallery from "../components/PhotoGallery.vue";
 import StatusTables from "../components/StatusTables.vue";
 import { useCrisisStore } from "../stores/crisis";
 
@@ -18,6 +18,7 @@ onUnmounted(() => store.stopPolling());
 <template>
   <div>
     <HeroSection />
+    <PhotoGallery />
     <section class="mx-auto max-w-5xl px-4 py-6">
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <CounterBar />
@@ -27,8 +28,7 @@ onUnmounted(() => store.stopPolling());
     <LiveFeeds />
     <StatusTables />
     <section class="bg-urgent-light py-8">
-      <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 px-4 lg:grid-cols-2">
-        <EmergencyContacts />
+      <div class="mx-auto max-w-3xl px-4">
         <ContributionForm />
       </div>
     </section>

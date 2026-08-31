@@ -29,7 +29,7 @@ function scrollToForm() {
         Active search: Nepal flash floods
       </p>
       <h1 class="mt-2 text-2xl font-bold leading-tight sm:text-4xl">
-        Help us find Arpan and his friends
+        Help us find Arpan, Bhavin and Karan
       </h1>
       <p class="mt-3 max-w-3xl text-gray-300">
         Arpan Kothari, Karan Bhardwaj, and Bhavinkumar Raval have been missing, along with the
