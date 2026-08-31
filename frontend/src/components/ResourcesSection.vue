@@ -46,10 +46,6 @@ const peopleToConnect = [
     <div class="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
         <h3 class="text-xs font-semibold uppercase tracking-wide text-gray-500">People We Want to Connect With</h3>
-        <p class="mt-1 text-xs text-gray-500">
-          Named survivors from public reporting near the same area and time. Leads to follow up on,
-          not confirmed contacts.
-        </p>
         <ul class="mt-2 space-y-2 text-sm">
           <li v-for="p in peopleToConnect" :key="p.name">
             <p class="font-medium text-gray-800">{{ p.name }}</p>
