@@ -14,7 +14,9 @@ class Settings(BaseSettings):
 
     cors_origins: str = "http://localhost:5173"
 
-    upload_dir: str = "./uploads"
+    supabase_url: str = ""
+    supabase_service_role_key: str = ""
+    supabase_storage_bucket: str = "tip-uploads"
 
     @property
     def cors_origin_list(self) -> list[str]:

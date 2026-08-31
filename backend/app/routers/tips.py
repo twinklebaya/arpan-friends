@@ -6,11 +6,11 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 from sqlmodel import Session
 
-from ..config import get_settings
 from ..database import get_session
 from ..models import Tip
 from ..schemas import TipCreateResponse
 from ..services.openrouter import moderate_tip
+from ..services.storage import upload_image
 
 router = APIRouter(prefix="/api/tips", tags=["tips"])
 
@@ -31,11 +31,7 @@ async def submit_tip(
     if len(images) > MAX_IMAGES:
         raise HTTPException(400, f"Max {MAX_IMAGES} images per submission")
 
-    settings = get_settings()
-    tip_dir = os.path.join(settings.upload_dir, "tips")
-    os.makedirs(tip_dir, exist_ok=True)
-
-    stored_paths = []
+    stored_urls = []
     for image in images:
         if not image.filename:
             continue
@@ -45,17 +41,18 @@ async def submit_tip(
         if len(contents) > MAX_IMAGE_BYTES:
             raise HTTPException(400, "Image exceeds 8MB limit")
         ext = os.path.splitext(image.filename)[1][:10]
-        safe_name = f"{uuid.uuid4().hex}{ext}"
-        dest_path = os.path.join(tip_dir, safe_name)
-        with open(dest_path, "wb") as f:
-            f.write(contents)
-        stored_paths.append(f"/uploads/tips/{safe_name}")
+        storage_path = f"tips/{uuid.uuid4().hex}{ext}"
+        try:
+            public_url = await upload_image(contents, storage_path, image.content_type)
+        except Exception as exc:
+            raise HTTPException(502, f"Image upload failed: {exc}")
+        stored_urls.append(public_url)
 
     moderation = await moderate_tip(message)
 
     tip = Tip(
         message=message,
-        image_paths=json.dumps(stored_paths),
+        image_paths=json.dumps(stored_urls),
         contact_name=contact_name,
         contact_email=contact_email,
         contact_phone=contact_phone,

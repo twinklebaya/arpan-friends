@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 
-import { api, BASE_URL } from "../lib/api";
+import { api } from "../lib/api";
 import Badge from "../components/ui/Badge.vue";
 import Button from "../components/ui/Button.vue";
 import Card from "../components/ui/Card.vue";
@@ -210,14 +210,8 @@ onMounted(() => {
             </div>
             <p class="mt-2 text-sm text-gray-700">{{ t.message }}</p>
             <div v-if="t.image_paths?.length" class="mt-2 flex gap-2">
-              <a
-                v-for="path in t.image_paths"
-                :key="path"
-                :href="`${BASE_URL}${path}`"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img :src="`${BASE_URL}${path}`" class="h-16 w-16 rounded object-cover" />
+              <a v-for="path in t.image_paths" :key="path" :href="path" target="_blank" rel="noopener noreferrer">
+                <img :src="path" class="h-16 w-16 rounded object-cover" />
               </a>
             </div>
             <p class="mt-2 text-xs text-gray-400">
