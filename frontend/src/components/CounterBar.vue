@@ -8,16 +8,24 @@ const store = useCrisisStore();
 <template>
   <Card class="h-full p-5 sm:p-6">
       <p class="text-center text-xs font-semibold uppercase tracking-wide text-gray-500">
-        Official toll: all nationalities, Nepal + Tibet
+        Official toll: all nationalities
       </p>
-      <div class="mt-3 rounded-lg bg-urgent-light p-4 text-center">
-        <p class="text-3xl font-bold text-urgent sm:text-4xl">
-          {{ store.stats?.still_missing_count?.toLocaleString() ?? "–" }}
-        </p>
-        <p class="mt-1 text-xs font-medium text-gray-600">Still missing</p>
+      <div class="mt-3 grid grid-cols-2 gap-3">
+        <div class="rounded-lg bg-urgent-light p-4 text-center">
+          <p class="text-3xl font-bold text-urgent sm:text-4xl">
+            {{ store.stats?.still_missing_count?.toLocaleString() ?? "–" }}
+          </p>
+          <p class="mt-1 text-xs font-medium text-gray-600">Still missing</p>
+        </div>
+        <div class="rounded-lg bg-green-50 p-4 text-center">
+          <p class="text-3xl font-bold text-green-600 sm:text-4xl">
+            {{ store.stats?.total_rescued?.toLocaleString() ?? "–" }}
+          </p>
+          <p class="mt-1 text-xs font-medium text-gray-600">Rescued</p>
+        </div>
       </div>
 
-      <div class="mt-4 grid grid-cols-3 gap-3 border-t border-gray-100 pt-4">
+      <div class="mt-4 grid grid-cols-2 gap-3 border-t border-gray-100 pt-4">
         <div class="rounded-md border border-gray-100 p-2 text-center">
           <p class="text-lg font-bold text-gray-900">{{ store.stats?.nepal_missing ?? "–" }}</p>
           <p class="text-xs text-gray-500">Missing (Nepal)</p>
@@ -25,10 +33,6 @@ const store = useCrisisStore();
         <div class="rounded-md border border-gray-100 p-2 text-center">
           <p class="text-lg font-bold text-gray-900">{{ store.stats?.tibet_missing ?? "–" }}</p>
           <p class="text-xs text-gray-500">Missing (Tibet)</p>
-        </div>
-        <div class="rounded-md border border-gray-100 p-2 text-center">
-          <p class="text-lg font-bold text-gray-900">{{ store.stats?.total_rescued ?? "–" }}</p>
-          <p class="text-xs text-gray-500">Rescued</p>
         </div>
       </div>
 

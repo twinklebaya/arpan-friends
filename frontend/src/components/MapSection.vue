@@ -66,7 +66,9 @@ onMounted(() => {
 
 <template>
   <div class="h-full rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
-    <h2 class="text-lg font-bold text-gray-900">Last Known Location &amp; Nearby Resources</h2>
+    <p class="text-center text-xs font-semibold uppercase tracking-wide text-gray-500">
+      Last Known Location &amp; Nearby Resources
+    </p>
     <p class="mt-1 text-sm text-gray-500">{{ LAST_KNOWN_LOCATION.note }}</p>
     <div class="mt-3 overflow-hidden rounded-lg border border-gray-200">
       <div ref="mapContainer" class="leaflet-map"></div>
