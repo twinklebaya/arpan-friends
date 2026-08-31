@@ -21,7 +21,7 @@ async function copyLink(anchorId) {
 </script>
 
 <template>
-  <section id="still-missing" class="mx-auto max-w-5xl scroll-mt-4 px-4 py-6">
+  <section id="still-missing" class="mx-auto max-w-7xl scroll-mt-4 px-4 py-6">
     <div class="flex items-center justify-between gap-2">
       <h2 class="text-lg font-bold text-gray-900">Still Missing</h2>
       <button

@@ -30,7 +30,7 @@ function scrollBy(amount) {
 
 <template>
   <section class="bg-gray-900 text-white">
-    <div class="mx-auto max-w-5xl px-4 pb-10 pt-6 sm:pb-14">
+    <div class="mx-auto max-w-7xl px-4 pb-10 pt-6 sm:pb-14">
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <!-- Individual photos: larger, takes up 2/3 on desktop -->
         <div class="lg:col-span-2">

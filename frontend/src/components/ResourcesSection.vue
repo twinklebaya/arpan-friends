@@ -41,7 +41,7 @@ const peopleToConnect = [
 </script>
 
 <template>
-  <section class="mx-auto max-w-5xl px-4 py-6">
+  <section class="mx-auto max-w-7xl px-4 py-6">
     <h2 class="text-lg font-bold text-gray-900">Resources</h2>
     <div class="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">

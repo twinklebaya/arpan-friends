@@ -20,7 +20,7 @@ onUnmounted(() => store.stopPolling());
   <div>
     <HeroSection />
     <PhotoGallery />
-    <section class="mx-auto max-w-5xl px-4 py-6">
+    <section class="mx-auto max-w-7xl px-4 py-6">
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <CounterBar />
         <MapSection />
@@ -30,7 +30,7 @@ onUnmounted(() => store.stopPolling());
     <ResourcesSection />
     <LiveFeeds />
     <section class="bg-urgent-light py-8">
-      <div class="mx-auto max-w-3xl px-4">
+      <div class="mx-auto max-w-4xl px-4">
         <ContributionForm />
       </div>
     </section>
