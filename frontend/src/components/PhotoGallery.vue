@@ -1,27 +1,10 @@
 <script setup>
-import { computed, ref } from "vue";
-
-import { useCrisisStore } from "../stores/crisis";
-
-const store = useCrisisStore();
+import { ref } from "vue";
 
 const GROUP_PHOTOS = [
   { url: "/photos/friends-group.jpg", caption: "Arpan, Bhavin, and Karan together" },
   { url: "/photos/kailash-tour-group.jpg", caption: "The full Kailash Journeys tour group" },
 ];
-
-const photos = computed(() => {
-  const personPhotos = [];
-  for (const person of store.primaryTargets) {
-    if (person.photo_url) {
-      personPhotos.push({ url: person.photo_url, caption: person.name });
-    }
-    for (const url of person.photo_urls || []) {
-      personPhotos.push({ url, caption: person.name });
-    }
-  }
-  return [...personPhotos, ...GROUP_PHOTOS];
-});
 
 const scrollEl = ref(null);
 function scrollBy(amount) {
@@ -32,7 +15,7 @@ function scrollBy(amount) {
 <template>
   <section class="mx-auto max-w-5xl px-4 py-6">
     <div class="flex items-center justify-between">
-      <h2 class="text-lg font-bold text-gray-900">Photos</h2>
+      <h2 class="text-lg font-bold text-gray-900">Additional Photos</h2>
       <div class="flex gap-2">
         <button
           type="button"
@@ -55,7 +38,7 @@ function scrollBy(amount) {
       class="mt-3 flex snap-x gap-4 overflow-x-auto pb-2"
     >
       <a
-        v-for="photo in photos"
+        v-for="photo in GROUP_PHOTOS"
         :key="photo.url"
         :href="photo.url"
         target="_blank"
@@ -65,7 +48,10 @@ function scrollBy(amount) {
         <img :src="photo.url" :alt="photo.caption" loading="lazy" class="h-40 w-full object-cover" />
         <p class="p-2 text-xs font-medium text-gray-700">{{ photo.caption }}</p>
       </a>
-      <p v-if="!photos.length" class="text-sm text-gray-400">No photos yet.</p>
     </div>
+    <p class="mt-3 text-sm text-gray-600">
+      If you recognize any details, person or location from these pictures, or if you have any
+      additional information to share, please reach out to us!
+    </p>
   </section>
 </template>
