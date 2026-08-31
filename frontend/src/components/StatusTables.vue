@@ -32,30 +32,32 @@ async function copyLink(anchorId) {
         {{ copiedId === "still-missing" ? "Link copied!" : "Share this list" }}
       </button>
     </div>
-    <div class="mt-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
-      <div class="overflow-x-auto rounded-lg border border-gray-200">
-        <table class="min-w-full divide-y divide-gray-200 text-sm">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="px-3 py-2 text-left font-semibold text-gray-700">Name</th>
-              <th class="px-3 py-2 text-left font-semibold text-gray-700">Age</th>
-              <th class="px-3 py-2 text-left font-semibold text-gray-700">Last Seen Location</th>
-              <th class="px-3 py-2 text-left font-semibold text-gray-700">Distinct Physical Markers</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-100 bg-white">
-            <tr v-for="p in store.stillMissing" :key="p.id" class="hover:bg-gray-50">
-              <td class="px-3 py-2 font-medium text-gray-900">{{ p.name }}</td>
-              <td class="px-3 py-2 text-gray-600">{{ p.age ?? "—" }}</td>
-              <td class="px-3 py-2 text-gray-600">{{ p.last_seen_location }}</td>
-              <td class="px-3 py-2 text-gray-600">{{ p.physical_markers }}</td>
-            </tr>
-            <tr v-if="!store.stillMissing.length">
-              <td colspan="4" class="px-3 py-4 text-center text-gray-400">No records yet.</td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div
+        v-for="p in store.stillMissing"
+        :key="p.id"
+        class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm"
+      >
+        <div class="flex items-baseline justify-between gap-2">
+          <p class="font-semibold text-gray-900">{{ p.name }}</p>
+          <p class="shrink-0 text-sm text-gray-500">Age {{ p.age ?? "—" }}</p>
+        </div>
+        <div class="mt-2 space-y-2 text-sm">
+          <div>
+            <p class="text-xs font-medium uppercase tracking-wide text-gray-400">
+              Last Seen Location
+            </p>
+            <p class="text-gray-700">{{ p.last_seen_location || "—" }}</p>
+          </div>
+          <div>
+            <p class="text-xs font-medium uppercase tracking-wide text-gray-400">
+              Distinct Physical Markers
+            </p>
+            <p class="text-gray-700">{{ p.physical_markers || "—" }}</p>
+          </div>
+        </div>
       </div>
+      <p v-if="!store.stillMissing.length" class="text-sm text-gray-400">No records yet.</p>
     </div>
   </section>
 </template>

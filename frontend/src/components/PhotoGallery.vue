@@ -3,7 +3,10 @@ import { ref } from "vue";
 
 const GROUP_PHOTOS = [
   { url: "/photos/friends-group.jpg", caption: "Arpan, Bhavin, and Karan together" },
-  { url: "/photos/kailash-tour-group.jpg", caption: "The full Kailash Journeys tour group" },
+  {
+    url: "/photos/kailash-tour-group.jpg",
+    caption: "The full Kailash Journeys tour group at Hotel Tibet, Kathmandu",
+  },
 ];
 
 const scrollEl = ref(null);

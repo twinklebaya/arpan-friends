@@ -26,9 +26,9 @@ onUnmounted(() => store.stopPolling());
         <MapSection />
       </div>
     </section>
+    <StatusTables />
     <ResourcesSection />
     <LiveFeeds />
-    <StatusTables />
     <section class="bg-urgent-light py-8">
       <div class="mx-auto max-w-3xl px-4">
         <ContributionForm />

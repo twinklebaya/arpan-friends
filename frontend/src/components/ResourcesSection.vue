@@ -4,6 +4,10 @@ import { RESOURCE_PINS } from "../lib/constants";
 const hospitals = RESOURCE_PINS.filter((p) => p.category === "hospital");
 const shelters = RESOURCE_PINS.filter((p) => p.category === "shelter");
 
+function mapLink(pin) {
+  return `https://www.google.com/maps?q=${pin.lat},${pin.lng}`;
+}
+
 // Sourced from the family directly: the Kailash Journeys group's ground
 // transport was outsourced to these two operators.
 const busProviders = [
@@ -41,10 +45,32 @@ const peopleToConnect = [
     <h2 class="text-lg font-bold text-gray-900">Resources</h2>
     <div class="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+        <h3 class="text-sm font-semibold text-gray-900">People We Want to Connect With</h3>
+        <p class="mt-1 text-xs text-gray-500">
+          Named survivors from public reporting near the same area and time. Leads to follow up on,
+          not confirmed contacts.
+        </p>
+        <ul class="mt-2 space-y-2 text-sm">
+          <li v-for="p in peopleToConnect" :key="p.name">
+            <p class="font-medium text-gray-800">{{ p.name }}</p>
+            <p class="text-xs text-gray-500">{{ p.context }}</p>
+            <p class="text-xs text-gray-400">Source: {{ p.source }}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
         <h3 class="text-sm font-semibold text-gray-900">Hospitals</h3>
         <ul class="mt-2 space-y-2 text-sm">
           <li v-for="h in hospitals" :key="h.label">
-            <p class="font-medium text-gray-800">{{ h.label }}</p>
+            <a
+              :href="mapLink(h)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium text-blue-600 hover:underline"
+            >
+              {{ h.label }} ↗
+            </a>
             <p class="text-xs text-gray-500">{{ h.note }}</p>
           </li>
         </ul>
@@ -54,7 +80,14 @@ const peopleToConnect = [
         <h3 class="text-sm font-semibold text-gray-900">Shelters</h3>
         <ul class="mt-2 space-y-2 text-sm">
           <li v-for="s in shelters" :key="s.label">
-            <p class="font-medium text-gray-800">{{ s.label }}</p>
+            <a
+              :href="mapLink(s)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium text-blue-600 hover:underline"
+            >
+              {{ s.label }} ↗
+            </a>
             <p class="text-xs text-gray-500">{{ s.note }}</p>
           </li>
         </ul>
@@ -66,21 +99,6 @@ const peopleToConnect = [
           <li v-for="b in busProviders" :key="b.name">
             <p class="font-medium text-gray-800">{{ b.name }}</p>
             <p class="text-xs text-gray-500">{{ b.note }}</p>
-          </li>
-        </ul>
-      </div>
-
-      <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-        <h3 class="text-sm font-semibold text-gray-900">People We Want to Connect With</h3>
-        <p class="mt-1 text-xs text-gray-500">
-          Named survivors from public reporting near the same area and time. Leads to follow up on,
-          not confirmed contacts.
-        </p>
-        <ul class="mt-2 space-y-2 text-sm">
-          <li v-for="p in peopleToConnect" :key="p.name">
-            <p class="font-medium text-gray-800">{{ p.name }}</p>
-            <p class="text-xs text-gray-500">{{ p.context }}</p>
-            <p class="text-xs text-gray-400">Source: {{ p.source }}</p>
           </li>
         </ul>
       </div>
