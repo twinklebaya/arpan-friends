@@ -33,6 +33,10 @@ function scrollBy(amount) {
         </button>
       </div>
     </div>
+    <p class="mt-1 text-sm text-gray-600">
+      If you recognize any details, person or location from these pictures, or if you have any
+      additional information to share, please reach out to us!
+    </p>
     <div
       ref="scrollEl"
       class="mt-3 flex snap-x gap-4 overflow-x-auto pb-2"
@@ -49,9 +53,5 @@ function scrollBy(amount) {
         <p class="p-2 text-xs font-medium text-gray-700">{{ photo.caption }}</p>
       </a>
     </div>
-    <p class="mt-3 text-sm text-gray-600">
-      If you recognize any details, person or location from these pictures, or if you have any
-      additional information to share, please reach out to us!
-    </p>
   </section>
 </template>
