@@ -112,10 +112,6 @@ function scrollBy(amount) {
               </button>
             </div>
           </div>
-          <p class="mt-1 text-xs text-gray-400">
-            If you recognize any details, person or location from these pictures, or if you have
-            any additional information to share, please reach out to us!
-          </p>
           <div ref="scrollEl" class="mt-3 flex snap-x gap-3 overflow-x-auto pb-2 lg:flex-col lg:overflow-x-visible">
             <button
               v-for="photo in GROUP_PHOTOS"
@@ -128,6 +124,10 @@ function scrollBy(amount) {
               <p class="p-2 text-xs font-medium text-gray-300">{{ photo.caption }}</p>
             </button>
           </div>
+          <p class="mt-3 text-xs text-gray-400">
+            If you recognize any details, person or location from these pictures, or if you have
+            any additional information to share, please reach out to us!
+          </p>
         </div>
       </div>
     </div>
