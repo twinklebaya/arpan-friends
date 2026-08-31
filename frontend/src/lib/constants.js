@@ -13,3 +13,37 @@ export const LAST_KNOWN_LOCATION = {
 };
 
 export const MAP_DEFAULT_ZOOM = 10;
+
+// Town-level approximate coordinates -- these are NOT precise street
+// addresses (none were found in public reporting), just honest
+// town-center pins so the map is still useful for general orientation.
+export const RESOURCE_PINS = [
+  {
+    lat: 28.1667,
+    lng: 85.3333,
+    label: "Rasuwa District Hospital",
+    category: "hospital",
+    note: "Dhunche (Rasuwa district HQ) -- approximate town-center pin, not a surveyed address.",
+  },
+  {
+    lat: 27.9667,
+    lng: 85.05,
+    label: "Trishuli District Hospital",
+    category: "hospital",
+    note: "Trishuli Bazaar, Nuwakot -- approximate town-center pin, not a surveyed address.",
+  },
+  {
+    lat: 27.7172,
+    lng: 85.324,
+    label: "Kathmandu hospitals (multiple)",
+    category: "hospital",
+    note: "General Kathmandu city pin -- flood casualties were distributed across several city hospitals.",
+  },
+  {
+    lat: 27.9167,
+    lng: 85.1667,
+    label: "Maithili Army Camp (survivor shelter)",
+    category: "shelter",
+    note: "Nuwakot -- Nepal Army camp where evacuated survivors were sheltered in tents. Approximate town-level pin.",
+  },
+];
