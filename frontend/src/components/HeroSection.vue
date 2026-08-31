@@ -23,12 +23,13 @@ function scrollToForm() {
       </p>
       <div class="mt-6 flex flex-wrap items-center gap-4">
         <Button variant="urgent" @click="scrollToForm">Submit Information</Button>
-        <a href="tel:+14087808343" class="text-sm text-gray-300 hover:text-white">
-          Or call/text <span class="font-semibold text-white">+1 (408) 780-8343</span> with any tip
-        </a>
-        <a href="tel:+16575221011" class="text-sm text-gray-300 hover:text-white">
-          or <span class="font-semibold text-white">+1 (657) 522-1011</span>
-        </a>
+        <p class="text-sm text-gray-300">
+          Or call/text
+          <a href="tel:+14087808343" class="font-semibold text-white hover:underline">+1 (408) 780-8343</a>
+          /
+          <a href="tel:+16575221011" class="font-semibold text-white hover:underline">+1 (657) 522-1011</a>
+          with any tip
+        </p>
       </div>
     </div>
   </section>
