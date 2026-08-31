@@ -10,6 +10,9 @@ const PHOTO_NAMES = ["Arpan Mithalal Kothari", "Karan Bhardwaj", "Bhavinkumar Ra
 const photoPeople = computed(() =>
   store.primaryTargets.filter((p) => PHOTO_NAMES.includes(p.name)),
 );
+const otherPeople = computed(() =>
+  store.primaryTargets.filter((p) => !PHOTO_NAMES.includes(p.name)),
+);
 
 const GROUP_PHOTOS = [
   { url: "/photos/friends-group.jpg", caption: "Arpan, Bhavin, and Karan together" },
@@ -31,8 +34,7 @@ function scrollBy(amount) {
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <!-- Individual photos: larger, takes up 2/3 on desktop -->
         <div class="lg:col-span-2">
-          <h2 class="text-lg font-bold text-white">Missing</h2>
-          <div class="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div
               v-for="person in photoPeople"
               :key="person.id"
@@ -74,6 +76,18 @@ function scrollBy(amount) {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div v-if="otherPeople.length" class="mt-6 border-t border-gray-700 pt-4">
+            <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">
+              Also missing from the same tour group
+            </p>
+            <ul class="mt-2 space-y-1 text-sm text-gray-300">
+              <li v-for="person in otherPeople" :key="person.id">
+                {{ person.name }}
+                <span class="text-gray-500">(age {{ person.age ?? "unknown" }})</span>
+              </li>
+            </ul>
           </div>
         </div>
 

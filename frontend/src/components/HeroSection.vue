@@ -1,8 +1,5 @@
 <script setup>
-import { useCrisisStore } from "../stores/crisis";
 import Button from "./ui/Button.vue";
-
-const store = useCrisisStore();
 
 function scrollToForm() {
   document.getElementById("contribute")?.scrollIntoView({ behavior: "smooth" });
@@ -32,25 +29,6 @@ function scrollToForm() {
         <a href="tel:+16575221011" class="text-sm text-gray-300 hover:text-white">
           or <span class="font-semibold text-white">+1 (657) 522-1011</span>
         </a>
-      </div>
-
-      <div
-        v-if="store.primaryTargets.some((p) => !['Arpan Mithalal Kothari', 'Karan Bhardwaj', 'Bhavinkumar Rajnikant Raval'].includes(p.name))"
-        class="mt-8 border-t border-gray-700 pt-4"
-      >
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">
-          Also missing from the same tour group
-        </p>
-        <ul class="mt-2 space-y-1 text-sm text-gray-300">
-          <li
-            v-for="person in store.primaryTargets.filter(
-              (p) => !['Arpan Mithalal Kothari', 'Karan Bhardwaj', 'Bhavinkumar Rajnikant Raval'].includes(p.name),
-            )"
-            :key="person.id"
-          >
-            {{ person.name }} <span class="text-gray-500">(age {{ person.age ?? "unknown" }})</span>
-          </li>
-        </ul>
       </div>
     </div>
   </section>
