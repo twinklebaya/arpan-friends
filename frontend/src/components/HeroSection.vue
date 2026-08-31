@@ -10,7 +10,7 @@ function scrollToForm() {
 <template>
   <section class="relative bg-gray-900 text-white">
     <SocialShare />
-    <div class="mx-auto max-w-7xl px-4 pt-10 sm:pt-14">
+    <div class="mx-auto max-w-7xl px-4 pt-6 sm:pt-8">
       <p class="text-sm font-semibold uppercase tracking-wide text-red-400">
         Active search: Nepal flash floods
       </p>
