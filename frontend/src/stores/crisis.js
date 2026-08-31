@@ -19,7 +19,15 @@ export const useCrisisStore = defineStore("crisis", {
   }),
 
   getters: {
-    stillMissing: (state) => state.persons.filter((p) => p.status === "missing"),
+    stillMissing: (state) => {
+      const missing = state.persons.filter((p) => p.status === "missing");
+      const featured = ["Arpan Mithalal Kothari", "Bhavinkumar Rajnikant Raval", "Karan Bhardwaj"];
+      const rank = (p) => {
+        const i = featured.indexOf(p.name);
+        return i === -1 ? featured.length : i;
+      };
+      return [...missing].sort((a, b) => rank(a) - rank(b));
+    },
     confirmedDeceased: (state) => state.persons.filter((p) => p.status === "deceased"),
     primaryTargets: (state) =>
       state.persons.filter((p) => p.is_primary_target && p.status === "missing"),

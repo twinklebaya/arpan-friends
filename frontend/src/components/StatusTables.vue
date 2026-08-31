@@ -21,22 +21,19 @@ async function copyLink(anchorId) {
 </script>
 
 <template>
-  <section class="mx-auto max-w-5xl space-y-6 px-4 py-6">
-    <div
-      id="still-missing"
-      class="scroll-mt-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5"
-    >
-      <div class="flex items-center justify-between gap-2">
-        <h2 class="text-lg font-bold text-gray-900">Still Missing</h2>
-        <button
-          type="button"
-          class="text-xs font-medium text-blue-600 hover:underline"
-          @click="copyLink('still-missing')"
-        >
-          {{ copiedId === "still-missing" ? "Link copied!" : "Share this list" }}
-        </button>
-      </div>
-      <div class="mt-3 overflow-x-auto rounded-lg border border-gray-200">
+  <section id="still-missing" class="mx-auto max-w-5xl scroll-mt-4 px-4 py-6">
+    <div class="flex items-center justify-between gap-2">
+      <h2 class="text-lg font-bold text-gray-900">Still Missing</h2>
+      <button
+        type="button"
+        class="text-xs font-medium text-blue-600 hover:underline"
+        @click="copyLink('still-missing')"
+      >
+        {{ copiedId === "still-missing" ? "Link copied!" : "Share this list" }}
+      </button>
+    </div>
+    <div class="mt-3 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
+      <div class="overflow-x-auto rounded-lg border border-gray-200">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
           <thead class="bg-gray-50">
             <tr>
