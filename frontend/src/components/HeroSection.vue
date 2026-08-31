@@ -1,21 +1,8 @@
 <script setup>
-import { computed } from "vue";
-
 import { useCrisisStore } from "../stores/crisis";
 import Button from "./ui/Button.vue";
 
 const store = useCrisisStore();
-
-// Only these three get a photo card -- the rest of the primary-target
-// roster is listed as text underneath instead.
-const PHOTO_NAMES = ["Arpan Mithalal Kothari", "Karan Bhardwaj", "Bhavinkumar Rajnikant Raval"];
-
-const photoPeople = computed(() =>
-  store.primaryTargets.filter((p) => PHOTO_NAMES.includes(p.name)),
-);
-const otherPeople = computed(() =>
-  store.primaryTargets.filter((p) => !PHOTO_NAMES.includes(p.name)),
-);
 
 function scrollToForm() {
   document.getElementById("contribute")?.scrollIntoView({ behavior: "smooth" });
@@ -42,49 +29,25 @@ function scrollToForm() {
         <a href="tel:+14087808343" class="text-sm text-gray-300 hover:text-white">
           Or call/text <span class="font-semibold text-white">+1 (408) 780-8343</span> with any tip
         </a>
+        <a href="tel:+16575221011" class="text-sm text-gray-300 hover:text-white">
+          or <span class="font-semibold text-white">+1 (657) 522-1011</span>
+        </a>
       </div>
 
-      <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-        <div
-          v-for="person in photoPeople"
-          :key="person.id"
-          class="overflow-hidden rounded-lg bg-gray-800"
-        >
-          <div class="flex aspect-square items-center justify-center bg-gray-700">
-            <img
-              v-if="person.photo_url"
-              :src="person.photo_url"
-              :alt="person.name"
-              loading="lazy"
-              class="h-full w-full object-cover"
-            />
-            <span v-else class="px-2 text-center text-xs text-gray-400">Photo pending</span>
-          </div>
-          <div class="p-3">
-            <p class="truncate text-sm font-semibold">{{ person.name }}</p>
-            <p class="text-xs text-gray-400">Age {{ person.age ?? "unknown" }}</p>
-            <div v-if="person.photo_urls?.length" class="mt-2 flex gap-1.5">
-              <a
-                v-for="url in person.photo_urls"
-                :key="url"
-                :href="url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block h-8 w-8 overflow-hidden rounded border border-gray-600"
-              >
-                <img :src="url" :alt="`Additional photo of ${person.name}`" loading="lazy" class="h-full w-full object-cover" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div v-if="otherPeople.length" class="mt-6 border-t border-gray-700 pt-4">
+      <div
+        v-if="store.primaryTargets.some((p) => !['Arpan Mithalal Kothari', 'Karan Bhardwaj', 'Bhavinkumar Rajnikant Raval'].includes(p.name))"
+        class="mt-8 border-t border-gray-700 pt-4"
+      >
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">
           Also missing from the same tour group
         </p>
         <ul class="mt-2 space-y-1 text-sm text-gray-300">
-          <li v-for="person in otherPeople" :key="person.id">
+          <li
+            v-for="person in store.primaryTargets.filter(
+              (p) => !['Arpan Mithalal Kothari', 'Karan Bhardwaj', 'Bhavinkumar Rajnikant Raval'].includes(p.name),
+            )"
+            :key="person.id"
+          >
             {{ person.name }} <span class="text-gray-500">(age {{ person.age ?? "unknown" }})</span>
           </li>
         </ul>

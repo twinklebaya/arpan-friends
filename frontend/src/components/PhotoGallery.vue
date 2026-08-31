@@ -1,5 +1,15 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
+
+import { openLightbox } from "../lib/lightbox";
+import { useCrisisStore } from "../stores/crisis";
+
+const store = useCrisisStore();
+
+const PHOTO_NAMES = ["Arpan Mithalal Kothari", "Karan Bhardwaj", "Bhavinkumar Rajnikant Raval"];
+const photoPeople = computed(() =>
+  store.primaryTargets.filter((p) => PHOTO_NAMES.includes(p.name)),
+);
 
 const GROUP_PHOTOS = [
   { url: "/photos/friends-group.jpg", caption: "Arpan, Bhavin, and Karan together" },
@@ -17,44 +27,93 @@ function scrollBy(amount) {
 
 <template>
   <section class="mx-auto max-w-5xl px-4 py-6">
-    <div class="flex items-center justify-between">
-      <h2 class="text-lg font-bold text-gray-900">Additional Photos</h2>
-      <div class="flex gap-2">
-        <button
-          type="button"
-          class="rounded-md border border-gray-300 px-2 py-1 text-sm text-gray-600 hover:bg-gray-50"
-          @click="scrollBy(-280)"
-        >
-          ←
-        </button>
-        <button
-          type="button"
-          class="rounded-md border border-gray-300 px-2 py-1 text-sm text-gray-600 hover:bg-gray-50"
-          @click="scrollBy(280)"
-        >
-          →
-        </button>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <!-- Individual photos: larger, takes up 2/3 on desktop -->
+      <div class="lg:col-span-2">
+        <h2 class="text-lg font-bold text-gray-900">Missing</h2>
+        <div class="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div
+            v-for="person in photoPeople"
+            :key="person.id"
+            class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm"
+          >
+            <button
+              type="button"
+              class="flex aspect-square w-full items-center justify-center bg-gray-100"
+              :disabled="!person.photo_url"
+              @click="openLightbox(person.photo_url, person.name)"
+            >
+              <img
+                v-if="person.photo_url"
+                :src="person.photo_url"
+                :alt="person.name"
+                loading="lazy"
+                class="h-full w-full cursor-pointer object-cover"
+              />
+              <span v-else class="px-2 text-center text-xs text-gray-400">Photo pending</span>
+            </button>
+            <div class="p-3">
+              <p class="truncate text-sm font-semibold text-gray-900">{{ person.name }}</p>
+              <p class="text-xs text-gray-500">Age {{ person.age ?? "unknown" }}</p>
+              <div v-if="person.photo_urls?.length" class="mt-2 flex gap-1.5">
+                <button
+                  v-for="url in person.photo_urls"
+                  :key="url"
+                  type="button"
+                  class="block h-8 w-8 overflow-hidden rounded border border-gray-300"
+                  @click="openLightbox(url, `Additional photo of ${person.name}`)"
+                >
+                  <img
+                    :src="url"
+                    :alt="`Additional photo of ${person.name}`"
+                    loading="lazy"
+                    class="h-full w-full cursor-pointer object-cover"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <p class="mt-1 text-sm text-gray-600">
-      If you recognize any details, person or location from these pictures, or if you have any
-      additional information to share, please reach out to us!
-    </p>
-    <div
-      ref="scrollEl"
-      class="mt-3 flex snap-x gap-4 overflow-x-auto pb-2"
-    >
-      <a
-        v-for="photo in GROUP_PHOTOS"
-        :key="photo.url"
-        :href="photo.url"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="block w-56 shrink-0 snap-start overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm"
-      >
-        <img :src="photo.url" :alt="photo.caption" loading="lazy" class="h-40 w-full object-cover" />
-        <p class="p-2 text-xs font-medium text-gray-700">{{ photo.caption }}</p>
-      </a>
+
+      <!-- Additional (group) photos: smaller, takes up 1/3 on desktop -->
+      <div>
+        <div class="flex items-center justify-between">
+          <h2 class="text-base font-bold text-gray-900">Additional Photos</h2>
+          <div class="flex gap-1">
+            <button
+              type="button"
+              class="rounded-md border border-gray-300 px-1.5 py-0.5 text-xs text-gray-600 hover:bg-gray-50"
+              @click="scrollBy(-160)"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              class="rounded-md border border-gray-300 px-1.5 py-0.5 text-xs text-gray-600 hover:bg-gray-50"
+              @click="scrollBy(160)"
+            >
+              →
+            </button>
+          </div>
+        </div>
+        <p class="mt-1 text-xs text-gray-500">
+          If you recognize any details, person or location from these pictures, or if you have any
+          additional information to share, please reach out to us!
+        </p>
+        <div ref="scrollEl" class="mt-3 flex snap-x gap-3 overflow-x-auto pb-2 lg:flex-col lg:overflow-x-visible">
+          <button
+            v-for="photo in GROUP_PHOTOS"
+            :key="photo.url"
+            type="button"
+            class="block w-36 shrink-0 snap-start overflow-hidden rounded-lg border border-gray-200 bg-white text-left shadow-sm lg:w-full"
+            @click="openLightbox(photo.url, photo.caption)"
+          >
+            <img :src="photo.url" :alt="photo.caption" loading="lazy" class="h-24 w-full cursor-pointer object-cover" />
+            <p class="p-2 text-xs font-medium text-gray-700">{{ photo.caption }}</p>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 </template>
