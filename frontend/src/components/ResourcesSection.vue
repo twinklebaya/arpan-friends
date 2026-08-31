@@ -42,7 +42,7 @@ const peopleToConnect = [
 
 <template>
   <section class="mx-auto max-w-7xl px-4 py-6">
-    <h2 class="text-lg font-bold text-gray-900">Resources</h2>
+    <h2 class="text-lg font-bold uppercase tracking-wide text-gray-900">Resources</h2>
     <div class="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
       <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
         <h3 class="text-sm font-semibold text-gray-900">People We Want to Connect With</h3>

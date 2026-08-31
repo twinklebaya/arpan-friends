@@ -8,6 +8,12 @@ class Settings(BaseSettings):
 
     database_url: str = "sqlite:///./crisis.db"
     admin_token: str = "change-me"
+    # Separate, narrower-scoped token for automated feed ingestion (e.g. a
+    # scheduled ChatGPT/Claude task). Deliberately distinct from
+    # admin_token: it should only ever be able to submit into the pending
+    # review queue, never review tips, edit persons, or see anything the
+    # full admin API exposes.
+    ingest_token: str = ""
 
     openrouter_api_key: str = ""
     openrouter_model: str = "openrouter/free"

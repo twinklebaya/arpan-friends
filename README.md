@@ -108,10 +108,35 @@ Every fetch goes through one `fetchAll()` action, so swapping polling for a real
 (Supabase realtime, a WebSocket, SSE) later only means calling the same state setters from a
 subscription callback — no component changes needed.
 
-## Optional next step: automated source monitoring
+## Automated source monitoring (ChatGPT/Claude ingestion endpoint)
 
-A scheduled job (Claude, ChatGPT, or otherwise) watching for updates from official sources and
-social/X could feed them in automatically: `POST /api/admin/source-updates` accepts raw text + a
-`source_type` tag and runs the OpenRouter classification — a scheduled job just needs to paste
-text in. Whatever posts it should still only ever reach the *pending* queue, never bypass the
-human-approval step, especially for anything that could suggest a deceased-status change.
+`POST /api/ingest/source-updates` lets an external tool (a scheduled ChatGPT Action, a Claude
+task, or anything else) feed in updates from official sources or social/X automatically. It takes
+the same body as the admin ingest endpoint (`raw_text`, `source_name`, `source_type`,
+`feed_type_hint`) and runs the same OpenRouter classification, but is gated by its own
+`INGEST_TOKEN` instead of `ADMIN_TOKEN` — holding it only lets you submit into the *pending*
+review queue, nothing else (no listing/approving tips, no editing persons, no visibility into
+anything else the admin API exposes). A human still has to approve every item via `/admin` before
+it reaches a live feed or changes a person's status; this endpoint can't bypass that, especially
+for anything that could suggest a deceased-status change (see the SourceType.social_media guard
+in `app/services/openrouter.py` and `app/services/ingest.py`).
+
+Example call:
+
+```bash
+curl -X POST https://<your-backend>/api/ingest/source-updates \
+  -H "Authorization: Bearer $INGEST_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "raw_text": "<pasted excerpt>",
+    "source_name": "<where this came from>",
+    "source_type": "news_media",
+    "feed_type_hint": "general"
+  }'
+```
+
+To wire this into a Custom GPT: add it as an Action with this endpoint's URL, `Bearer` auth using
+`INGEST_TOKEN` as the API key, and instruct the GPT to only call it for genuinely new information
+worth surfacing, always citing `source_name` honestly (use `social_media` for anything from
+X/Twitter — the backend already refuses to let that trigger a deceased-status change regardless of
+what the GPT reports).

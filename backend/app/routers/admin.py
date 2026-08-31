@@ -18,7 +18,7 @@ from ..models import (
     Tip,
 )
 from ..schemas import PersonCreateIn, PersonUpdateIn, ReviewAction, SourceUpdateIn, StatsUpdateIn
-from ..services.openrouter import classify_source_update
+from ..services.ingest import create_pending_source_update
 
 router = APIRouter(prefix="/api/admin", tags=["admin"], dependencies=[Depends(require_admin)])
 
@@ -65,44 +65,7 @@ def review_tip(tip_id: int, action: ReviewAction, session: Session = Depends(get
 
 @router.post("/source-updates")
 async def ingest_source_update(payload: SourceUpdateIn, session: Session = Depends(get_session)):
-    target_names = session.exec(
-        select(Person.name).where(Person.is_primary_target == True)  # noqa: E712
-    ).all()
-
-    ai_result = await classify_source_update(
-        payload.raw_text, payload.source_name, payload.source_type.value, list(target_names)
-    )
-
-    matched_person_id = None
-    if ai_result.get("person_match_name"):
-        matched = session.exec(
-            select(Person).where(Person.name == ai_result["person_match_name"])
-        ).first()
-        if matched:
-            matched_person_id = matched.id
-
-    status_suggestion = ai_result.get("status_suggestion")
-    if payload.source_type == SourceType.social_media and status_suggestion == "deceased":
-        # Hard backend guard: never let a social-media post drive a deceased
-        # determination, even if the model didn't follow the prompt rule.
-        status_suggestion = None
-
-    update = SourceUpdate(
-        raw_text=payload.raw_text,
-        source_name=payload.source_name,
-        source_url=payload.source_url,
-        source_type=payload.source_type,
-        feed_type_suggestion=ai_result.get("feed_type") or payload.feed_type_hint,
-        ai_summary=ai_result.get("summary"),
-        ai_person_match_id=matched_person_id,
-        ai_status_suggestion=status_suggestion,
-        ai_stats_suggestion=ai_result.get("stats_note"),
-        ai_error=ai_result.get("ai_error"),
-    )
-    session.add(update)
-    session.commit()
-    session.refresh(update)
-    return update
+    return await create_pending_source_update(payload, session)
 
 
 @router.get("/source-updates")
