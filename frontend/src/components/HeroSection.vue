@@ -15,7 +15,7 @@ function scrollToForm() {
       <h1 class="mt-2 text-2xl font-bold leading-tight sm:text-4xl">
         Help us find Arpan, Bhavin and Karan
       </h1>
-      <p class="mt-3 max-w-3xl text-gray-300">
+      <p class="mt-3 max-w-none text-gray-300">
         Arpan Kothari, Karan Bhardwaj, and Bhavinkumar Raval have been missing, along with the
         rest of their Kailash Journeys tour group, since the flash floods near the Nepal-Tibet
         border, Rasuwa district. If you have any information, however small, please share it
