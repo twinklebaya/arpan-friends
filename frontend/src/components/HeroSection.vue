@@ -1,5 +1,6 @@
 <script setup>
 import Button from "./ui/Button.vue";
+import SocialShare from "./SocialShare.vue";
 
 function scrollToForm() {
   document.getElementById("contribute")?.scrollIntoView({ behavior: "smooth" });
@@ -7,7 +8,8 @@ function scrollToForm() {
 </script>
 
 <template>
-  <section class="bg-gray-900 text-white">
+  <section class="relative bg-gray-900 text-white">
+    <SocialShare />
     <div class="mx-auto max-w-7xl px-4 pt-10 sm:pt-14">
       <p class="text-sm font-semibold uppercase tracking-wide text-red-400">
         Active search: Nepal flash floods
