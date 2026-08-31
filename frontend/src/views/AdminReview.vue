@@ -12,7 +12,6 @@ const authError = ref("");
 
 const pendingTips = ref([]);
 const pendingSourceUpdates = ref([]);
-const persons = ref([]);
 
 const ingestForm = ref({
   raw_text: "",
@@ -43,7 +42,6 @@ async function refreshAll() {
       "/api/admin/source-updates?status=pending",
       token.value,
     );
-    persons.value = await api.getPersons();
   } catch (err) {
     authError.value = err.message;
   }
@@ -81,14 +79,6 @@ async function submitIngest() {
   } catch (err) {
     ingestError.value = err.message;
   }
-}
-
-async function setPersonStatus(person, newStatus) {
-  await api.adminRequest(`/api/admin/persons/${person.id}`, token.value, {
-    method: "PATCH",
-    body: JSON.stringify({ status: newStatus }),
-  });
-  refreshAll();
 }
 
 onMounted(() => {
@@ -223,44 +213,6 @@ onMounted(() => {
           </Card>
           <p v-if="!pendingTips.length" class="text-sm text-gray-400">Nothing pending.</p>
         </div>
-      </div>
-
-      <!-- Manual person status corrections -->
-      <div>
-        <h2 class="font-semibold text-gray-900">Person records</h2>
-        <div class="mt-3 overflow-x-auto rounded-lg border border-gray-200">
-          <table class="min-w-full divide-y divide-gray-200 text-sm">
-            <thead class="bg-gray-50">
-              <tr>
-                <th class="px-3 py-2 text-left">Name</th>
-                <th class="px-3 py-2 text-left">Status</th>
-                <th class="px-3 py-2 text-left">Change</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100 bg-white">
-              <tr v-for="p in persons" :key="p.id">
-                <td class="px-3 py-2">{{ p.name }}</td>
-                <td class="px-3 py-2">
-                  <Badge :tone="p.status === 'deceased' ? 'urgent' : 'warning'">{{ p.status }}</Badge>
-                </td>
-                <td class="px-3 py-2">
-                  <select
-                    class="rounded-md border border-gray-300 p-1 text-xs"
-                    :value="p.status"
-                    @change="setPersonStatus(p, $event.target.value)"
-                  >
-                    <option value="missing">missing</option>
-                    <option value="deceased">deceased</option>
-                  </select>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="mt-2 text-xs text-gray-400">
-          Manual override: use only when you have independent verified confirmation. Prefer the
-          source-update review flow above so there is an audit trail.
-        </p>
       </div>
     </template>
   </div>
