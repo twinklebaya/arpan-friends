@@ -9,7 +9,7 @@ export const LAST_KNOWN_LOCATION = {
   lat: 28.26584,
   lng: 85.37584,
   label: "Last recorded phone location, Mr. Suresh (group member), near Timure / Rasuwagadhi border, Nepal",
-  note: "Family-sourced: Apple location data, 7:51am Nepal time, Aug 26 2026 — his phone lost connection at 8:28am. Not an official/surveyed coordinate.",
+  note: "Family-sourced: Apple location data, 7:51am Nepal time, Aug 26 2026. His phone lost connection at 8:28am. Not an official/surveyed coordinate.",
 };
 
 export const MAP_DEFAULT_ZOOM = 10;

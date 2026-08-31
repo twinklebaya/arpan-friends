@@ -26,15 +26,15 @@ function scrollToForm() {
   <section class="bg-gray-900 text-white">
     <div class="mx-auto max-w-5xl px-4 py-10 sm:py-14">
       <p class="text-sm font-semibold uppercase tracking-wide text-red-400">
-        Active search — Nepal flash floods
+        Active search: Nepal flash floods
       </p>
       <h1 class="mt-2 text-2xl font-bold leading-tight sm:text-4xl">
-        Help us find my cousin Arpan and his friends
+        Help us find Arpan and his friends
       </h1>
       <p class="mt-3 max-w-3xl text-gray-300">
         Arpan Kothari, Karan Bhardwaj, and Bhavinkumar Raval have been missing, along with the
         rest of their Kailash Journeys tour group, since the flash floods near the Nepal-Tibet
-        border, Rasuwa district. If you have any information — however small — please share it
+        border, Rasuwa district. If you have any information, however small, please share it
         below.
       </p>
       <div class="mt-6 flex flex-wrap items-center gap-4">
@@ -72,7 +72,7 @@ function scrollToForm() {
                 rel="noopener noreferrer"
                 class="block h-8 w-8 overflow-hidden rounded border border-gray-600"
               >
-                <img :src="url" :alt="`${person.name} — additional photo`" loading="lazy" class="h-full w-full object-cover" />
+                <img :src="url" :alt="`Additional photo of ${person.name}`" loading="lazy" class="h-full w-full object-cover" />
               </a>
             </div>
           </div>

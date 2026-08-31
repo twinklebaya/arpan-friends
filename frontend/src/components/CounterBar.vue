@@ -8,7 +8,7 @@ const store = useCrisisStore();
 <template>
   <Card class="h-full p-5 sm:p-6">
       <p class="text-center text-xs font-semibold uppercase tracking-wide text-gray-500">
-        Official toll — all nationalities, Nepal + Tibet
+        Official toll: all nationalities, Nepal + Tibet
       </p>
       <div class="mt-3 grid grid-cols-2 gap-4">
         <div class="rounded-lg bg-urgent-light p-4 text-center">
@@ -51,8 +51,8 @@ const store = useCrisisStore();
       <p class="mt-4 text-center text-xs text-gray-400">
         <strong>{{ store.stats?.hub_registered_missing_count ?? 0 }}</strong> missing and
         <strong>{{ store.stats?.hub_registered_deceased_count ?? 0 }}</strong> deceased named
-        individuals are registered on this hub specifically (see tables below) — a small subset
-        of the official toll above.
+        individuals are registered on this hub specifically (see tables below), a small subset of
+        the official toll above.
       </p>
       <p v-if="store.stats?.note" class="mt-2 text-center text-xs text-gray-400">
         {{ store.stats.note }}

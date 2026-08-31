@@ -128,7 +128,7 @@ onMounted(() => {
         <h2 class="font-semibold text-gray-900">Ingest a source update</h2>
         <p class="mt-1 text-xs text-gray-500">
           Paste text from an official statement, news article, or a social media post. It runs
-          through OpenRouter for classification and lands in the pending queue below — nothing
+          through OpenRouter for classification and lands in the pending queue below. Nothing
           publishes until you approve it.
         </p>
         <div class="mt-3 space-y-3">
@@ -215,7 +215,7 @@ onMounted(() => {
               </a>
             </div>
             <p class="mt-2 text-xs text-gray-400">
-              {{ t.contact_email }} {{ t.contact_phone }} — AI notes: {{ t.ai_notes }}
+              {{ t.contact_email }} {{ t.contact_phone }}. AI notes: {{ t.ai_notes }}
               <span v-if="t.ai_spam_likelihood !== null">
                 (spam likelihood: {{ t.ai_spam_likelihood }})
               </span>
@@ -258,7 +258,7 @@ onMounted(() => {
           </table>
         </div>
         <p class="mt-2 text-xs text-gray-400">
-          Manual override — use only when you have independent verified confirmation. Prefer the
+          Manual override: use only when you have independent verified confirmation. Prefer the
           source-update review flow above so there is an audit trail.
         </p>
       </div>

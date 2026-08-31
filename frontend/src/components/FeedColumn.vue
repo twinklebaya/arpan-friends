@@ -20,7 +20,7 @@ function sourceLabel(sourceType) {
       official: "Official",
       news_media: "News",
       family: "Family",
-      social_media: "Social media — unverified",
+      social_media: "Social media (unverified)",
       other: "Other",
       tip: "Public tip",
     }[sourceType] || "Source"

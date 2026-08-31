@@ -45,7 +45,7 @@ const contactGroups = [
     contacts: [
       { label: "National Disaster Hotline", phone: "1234" },
       { label: "Nepal Tourist Police (24/7)", phone: "+977 985 128 9445", note: "Also on WhatsApp" },
-      { label: "Nepal Tourism Board — Tourist Assistance (24/7)", phone: "1234 / 1144" },
+      { label: "Nepal Tourism Board, Tourist Assistance (24/7)", phone: "1234 / 1144" },
       { label: "Nepal Police", phone: "100" },
       { label: "Ambulance", phone: "102" },
       { label: "General mobile emergency", phone: "112" },
