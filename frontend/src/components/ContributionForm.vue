@@ -3,7 +3,6 @@ import { ref } from "vue";
 
 import { api } from "../lib/api";
 import Button from "./ui/Button.vue";
-import Card from "./ui/Card.vue";
 
 const message = ref("");
 const contactName = ref("");
@@ -52,7 +51,7 @@ async function onSubmit() {
       reviewed by an admin before it appears publicly, to keep the live feeds accurate.
     </p>
 
-    <Card class="mt-4 p-5">
+    <div class="mt-4">
       <div v-if="status === 'success'" class="rounded-md bg-green-50 p-4 text-sm text-green-800">
         Thank you. Your submission has been received and is <strong>pending admin review</strong>.
         It will not appear publicly until approved.
@@ -127,6 +126,6 @@ async function onSubmit() {
           {{ status === "submitting" ? "Submitting…" : "Submit Information" }}
         </Button>
       </form>
-    </Card>
+    </div>
   </div>
 </template>
