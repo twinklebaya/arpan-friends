@@ -28,11 +28,20 @@ function sourceLabel(sourceType) {
 }
 
 function formatTime(iso) {
-  return new Date(iso).toLocaleString(undefined, {
+  // The backend stores/serializes timestamps in UTC but without a
+  // timezone marker (e.g. "2026-08-31T10:00:00"). JS's Date parser treats
+  // a timezone-less string as LOCAL time, not UTC, which silently shows
+  // the wrong time. Append "Z" so it's parsed as UTC, then
+  // toLocaleString's default behavior (no `timeZone` option) renders it
+  // in the viewer's own local timezone.
+  const hasTimezone = /Z$|[+-]\d\d:\d\d$/.test(iso);
+  const utcIso = hasTimezone ? iso : `${iso}Z`;
+  return new Date(utcIso).toLocaleString(undefined, {
     month: "short",
     day: "numeric",
     hour: "numeric",
     minute: "2-digit",
+    timeZoneName: "short",
   });
 }
 </script>
