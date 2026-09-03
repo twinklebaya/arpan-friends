@@ -44,6 +44,8 @@ class Person(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str
     age: Optional[int] = None
+    nationality: Optional[str] = None
+    sex: Optional[str] = None  # "M" or "F", per how it's recorded on official documents
     is_primary_target: bool = False  # the Kailash Journeys individuals (hero + target feed)
     status: PersonStatus = PersonStatus.missing
 

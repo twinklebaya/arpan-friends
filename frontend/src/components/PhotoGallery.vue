@@ -85,7 +85,10 @@ function scrollBy(amount) {
             <ul class="mt-2 space-y-1 text-sm text-gray-300">
               <li v-for="person in otherPeople" :key="person.id">
                 {{ person.name }}
-                <span class="text-gray-500">(age {{ person.age ?? "unknown" }})</span>
+                <span class="text-gray-500">
+                  (age {{ person.age ?? "unknown" }}, {{ person.sex ?? "sex unknown" }},
+                  {{ person.nationality ?? "nationality unknown" }})
+                </span>
               </li>
             </ul>
           </div>

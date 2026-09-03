@@ -44,6 +44,8 @@ class SourceUpdateIn(BaseModel):
 class PersonCreateIn(BaseModel):
     name: str = Field(min_length=1)
     age: Optional[int] = None
+    nationality: Optional[str] = None
+    sex: Optional[str] = None
     is_primary_target: bool = True
     status: PersonStatus = PersonStatus.missing
     last_seen_location: str = ""
@@ -59,6 +61,8 @@ class PersonSubmitIn(BaseModel):
 
     name: str = Field(min_length=1, max_length=200)
     age: Optional[int] = Field(default=None, ge=0, le=130)
+    nationality: Optional[str] = Field(default=None, max_length=100)
+    sex: Optional[str] = Field(default=None, max_length=20)
     status: PersonStatus = PersonStatus.missing
     last_seen_location: str = Field(default="", max_length=1000)
     found_location: Optional[str] = Field(default=None, max_length=1000)
@@ -72,6 +76,8 @@ class PersonSubmitIn(BaseModel):
 class PersonUpdateIn(BaseModel):
     name: Optional[str] = None
     age: Optional[int] = None
+    nationality: Optional[str] = None
+    sex: Optional[str] = None
     is_primary_target: Optional[bool] = None
     status: Optional[PersonStatus] = None
     photo_url: Optional[str] = None

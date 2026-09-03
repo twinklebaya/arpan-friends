@@ -24,6 +24,8 @@ def _public_person(p: Person) -> dict:
         "id": p.id,
         "name": p.name,
         "age": p.age,
+        "nationality": p.nationality,
+        "sex": p.sex,
         "is_primary_target": p.is_primary_target,
         "status": p.status,
         "last_seen_location": p.last_seen_location,
