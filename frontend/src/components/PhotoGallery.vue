@@ -79,7 +79,7 @@ function scrollBy(amount) {
           </div>
 
           <div v-if="otherPeople.length" class="mt-6 border-t border-gray-700 pt-4">
-            <p class="text-center text-xs font-semibold uppercase tracking-wide text-gray-400">
+            <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">
               Also missing from the same tour group
             </p>
             <ul class="mt-2 grid grid-cols-1 gap-x-6 gap-y-1 text-sm text-gray-300 sm:grid-cols-2">
