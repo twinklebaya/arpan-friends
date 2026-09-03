@@ -1,9 +1,14 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import { useCrisisStore } from "../stores/crisis";
 
 const store = useCrisisStore();
+
+const CORE_NAMES = ["Arpan Mithalal Kothari", "Bhavinkumar Rajnikant Raval", "Karan Bhardwaj"];
+const coreStillMissing = computed(() =>
+  store.stillMissing.filter((p) => CORE_NAMES.includes(p.name)),
+);
 
 // Splits a free-text field into sentence-ish chunks so long paragraphs
 // (e.g. a reconstructed timeline) read as scannable bullet points instead
@@ -43,9 +48,9 @@ async function copyLink(anchorId) {
         {{ copiedId === "still-missing" ? "Link copied!" : "Share this list" }}
       </button>
     </div>
-    <div class="mt-3 grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div class="mt-3 grid grid-cols-1 gap-4 md:grid-cols-3">
       <div
-        v-for="p in store.stillMissing"
+        v-for="p in coreStillMissing"
         :key="p.id"
         class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm"
       >
@@ -74,7 +79,7 @@ async function copyLink(anchorId) {
           </div>
         </div>
       </div>
-      <p v-if="!store.stillMissing.length" class="text-sm text-gray-400">No records yet.</p>
+      <p v-if="!coreStillMissing.length" class="text-sm text-gray-400">No records yet.</p>
     </div>
   </section>
 </template>
