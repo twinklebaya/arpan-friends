@@ -224,7 +224,7 @@ async function submitComment() {
             </form>
 
             <div class="mt-6 space-y-4">
-              <p v-if="commentsLoading" class="text-sm text-gray-400">Loading comments...</p>
+              <p v-if="commentsLoading" class="text-sm text-gray-400">Loading messages...</p>
               <p v-else-if="!comments.length" class="text-sm text-gray-400">
                 No comments yet. Be the first to share a message.
               </p>
