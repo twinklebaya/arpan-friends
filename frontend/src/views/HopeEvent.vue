@@ -122,8 +122,8 @@ async function submitComment() {
             </dd>
           </div>
           <div>
-            <dt class="font-semibold uppercase tracking-wide text-gray-400">Format</dt>
-            <dd class="mt-1 text-gray-200">Virtual and in person</dd>
+            <dt class="font-semibold uppercase tracking-wide text-gray-400">Where</dt>
+            <dd class="mt-1 text-gray-200">TBD</dd>
           </div>
           <div>
             <dt class="font-semibold uppercase tracking-wide text-gray-400">Hosted from</dt>
@@ -148,10 +148,10 @@ async function submitComment() {
                 : 'border-gray-600 bg-gray-800 text-gray-200 hover:border-urgent hover:text-urgent'
             "
           >
-            <span aria-hidden="true">{{ hasLoved ? "❤️" : "🤍" }}</span>
-            {{ hasLoved ? "You sent love" : "Send love" }}
+            <span aria-hidden="true">🙏</span>
+            {{ hasLoved ? "You sent hope & prayers" : "Send hope & prayers" }}
           </button>
-          <span class="text-sm text-gray-400">{{ loveCount }} people have sent love</span>
+          <span class="text-sm text-gray-400">{{ loveCount }} people have sent hope & prayers</span>
           <SocialShare inline :url="HOPE_URL" :text="HOPE_SHARE_TEXT" />
         </div>
       </div>
