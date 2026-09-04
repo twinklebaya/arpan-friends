@@ -39,10 +39,14 @@ function dismiss() {
         &times;
       </button>
       <p class="pr-4 text-xs font-semibold uppercase tracking-wide text-urgent">Global event</p>
-      <p class="mt-1 pr-4 text-sm font-bold text-gray-900">
-        "Rasuwa Hope and Awareness" &mdash; Sun, Sept 6, 5 PM Pacific
-      </p>
-      <p class="mt-1 text-sm text-gray-600">
+      <p class="mt-1 pr-4 text-sm font-bold text-gray-900">"Rasuwa Hope and Awareness"</p>
+      <ul class="mt-1 space-y-0.5 text-xs text-gray-600">
+        <li>Sun, Sept 6 &middot; 5:00 PM Pacific (USA)</li>
+        <li>Mon, Sept 7 &middot; 5:30 AM India (IST)</li>
+        <li>Mon, Sept 7 &middot; 5:45 AM Nepal (NPT)</li>
+        <li>Mon, Sept 7 &middot; 10:00 AM Australia Eastern (AEST)</li>
+      </ul>
+      <p class="mt-2 text-sm text-gray-600">
         Virtual and in person from the SF Bay Area. Hear from families who found their way back.
       </p>
       <div class="mt-3 flex items-center gap-4">
