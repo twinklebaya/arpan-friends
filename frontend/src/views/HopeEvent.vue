@@ -122,6 +122,7 @@ async function submitComment() {
             <dd class="mt-1 space-y-1 text-gray-200">
               <p>Sun, Sept 6 &middot; 5:00 PM Pacific (USA)</p>
               <p>Sun, Sept 6 &middot; 8:00 PM Eastern (Canada)</p>
+              <p>Mon, Sept 7 &middot; 5:30 AM India (IST)</p>
               <p>Mon, Sept 7 &middot; 8:00 AM Malaysia (MYT)</p>
               <p>Mon, Sept 7 &middot; 10:00 AM Australia Eastern (AEST)</p>
             </dd>

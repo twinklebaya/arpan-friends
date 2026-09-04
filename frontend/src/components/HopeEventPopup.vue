@@ -39,6 +39,7 @@ function dismiss() {
       <ul class="mt-1 space-y-0.5 text-xs text-gray-600">
         <li>Sun, Sept 6 &middot; 5:00 PM Pacific (USA)</li>
         <li>Sun, Sept 6 &middot; 8:00 PM Eastern (Canada)</li>
+        <li>Mon, Sept 7 &middot; 5:30 AM India (IST)</li>
         <li>Mon, Sept 7 &middot; 8:00 AM Malaysia (MYT)</li>
         <li>Mon, Sept 7 &middot; 10:00 AM Australia Eastern (AEST)</li>
       </ul>
