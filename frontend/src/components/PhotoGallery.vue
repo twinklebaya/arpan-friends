@@ -127,7 +127,7 @@ function scrollBy(amount) {
               class="block w-36 shrink-0 snap-start overflow-hidden rounded-lg bg-gray-800 text-left lg:w-full"
               @click="openLightbox(photo.url, photo.caption)"
             >
-              <img :src="photo.url" :alt="photo.caption" loading="lazy" class="h-24 w-full cursor-pointer object-cover" />
+              <img :src="photo.url" :alt="photo.caption" loading="lazy" class="h-32 w-full cursor-pointer object-cover" />
               <p class="p-2 text-xs font-medium text-gray-300">{{ photo.caption }}</p>
             </button>
           </div>
