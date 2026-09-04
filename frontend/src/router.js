@@ -2,11 +2,13 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import AdminReview from "./views/AdminReview.vue";
 import Home from "./views/Home.vue";
+import HopeEvent from "./views/HopeEvent.vue";
 
 export default createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", name: "home", component: Home },
+    { path: "/hope", name: "hope", component: HopeEvent },
     { path: "/admin", name: "admin", component: AdminReview },
   ],
   scrollBehavior(to) {

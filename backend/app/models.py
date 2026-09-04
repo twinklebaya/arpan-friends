@@ -165,3 +165,24 @@ class CrisisStats(SQLModel, table=True):
 
     note: Optional[str] = None
     updated_at: datetime = Field(default_factory=utcnow)
+
+
+class HopeEventEngagement(SQLModel, table=True):
+    """Single-row counter table for the /hope event page."""
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    love_count: int = 0
+    updated_at: datetime = Field(default_factory=utcnow)
+
+
+class HopeComment(SQLModel, table=True):
+    """Open comment wall on the /hope event page. Unlike tips/persons,
+    these are not admin-review-gated before appearing -- it's a public
+    support space, not a data-safety-critical feed -- but a delete
+    endpoint exists behind require_admin as a moderation safety valve.
+    """
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    author_name: Optional[str] = None
+    message: str
+    created_at: datetime = Field(default_factory=utcnow)

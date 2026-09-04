@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import get_settings
 from .database import create_db_and_tables
-from .routers import admin, feed, ingest, persons, stats, tips
+from .routers import admin, feed, hope, ingest, persons, stats, tips
 from .seed import seed_if_empty
 
 settings = get_settings()
@@ -36,6 +36,7 @@ app.include_router(feed.router)
 app.include_router(tips.router)
 app.include_router(admin.router)
 app.include_router(ingest.router)
+app.include_router(hope.router)
 
 
 @app.get("/api/health")

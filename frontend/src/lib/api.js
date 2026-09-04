@@ -34,6 +34,12 @@ export const api = {
   submitPerson: (payload) =>
     request("/api/persons/submit", { method: "POST", body: JSON.stringify(payload) }),
 
+  getHopeStats: () => request("/api/hope/stats"),
+  loveHopeEvent: () => request("/api/hope/love", { method: "POST" }),
+  getHopeComments: () => request("/api/hope/comments"),
+  submitHopeComment: (payload) =>
+    request("/api/hope/comments", { method: "POST", body: JSON.stringify(payload) }),
+
   // Admin (requires a bearer token from the caller)
   adminRequest: (path, token, options = {}) =>
     request(path, {

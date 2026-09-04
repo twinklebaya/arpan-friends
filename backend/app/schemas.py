@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List, Literal, Optional
 
 from pydantic import BaseModel, Field
@@ -87,6 +88,22 @@ class PersonUpdateIn(BaseModel):
     last_seen_location: Optional[str] = None
     source_name: Optional[str] = None
     source_url: Optional[str] = None
+
+
+class HopeStatsOut(BaseModel):
+    love_count: int
+
+
+class HopeCommentIn(BaseModel):
+    author_name: Optional[str] = Field(default=None, max_length=100)
+    message: str = Field(min_length=1, max_length=2000)
+
+
+class HopeCommentOut(BaseModel):
+    id: int
+    author_name: Optional[str] = None
+    message: str
+    created_at: datetime
 
 
 class StatsUpdateIn(BaseModel):
