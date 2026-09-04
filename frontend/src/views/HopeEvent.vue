@@ -111,10 +111,15 @@ async function submitComment() {
         <h1 class="mt-2 text-2xl font-bold leading-tight sm:text-4xl">
           Global "Rasuwa Hope and Awareness" Event
         </h1>
-        <dl class="mt-6 grid grid-cols-1 gap-4 text-sm sm:grid-cols-3">
+        <dl class="mt-6 grid grid-cols-1 gap-6 text-sm sm:grid-cols-3">
           <div>
             <dt class="font-semibold uppercase tracking-wide text-gray-400">When</dt>
-            <dd class="mt-1 text-gray-200">Sunday, September 6 &middot; 5:00 PM Pacific</dd>
+            <dd class="mt-1 space-y-1 text-gray-200">
+              <p>Sun, Sept 6 &middot; 5:00 PM Pacific (USA)</p>
+              <p>Mon, Sept 7 &middot; 5:30 AM India (IST)</p>
+              <p>Mon, Sept 7 &middot; 5:45 AM Nepal (NPT)</p>
+              <p>Mon, Sept 7 &middot; 10:00 AM Australia Eastern (AEST)</p>
+            </dd>
           </div>
           <div>
             <dt class="font-semibold uppercase tracking-wide text-gray-400">Format</dt>

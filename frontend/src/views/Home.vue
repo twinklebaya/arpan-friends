@@ -4,6 +4,7 @@ import { onUnmounted } from "vue";
 import ContributionForm from "../components/ContributionForm.vue";
 import CounterBar from "../components/CounterBar.vue";
 import HeroSection from "../components/HeroSection.vue";
+import HopeEventPopup from "../components/HopeEventPopup.vue";
 import LiveFeeds from "../components/LiveFeeds.vue";
 import MapSection from "../components/MapSection.vue";
 import PhotoGallery from "../components/PhotoGallery.vue";
@@ -18,6 +19,7 @@ onUnmounted(() => store.stopPolling());
 
 <template>
   <div>
+    <HopeEventPopup />
     <HeroSection />
     <PhotoGallery />
     <section class="mx-auto max-w-7xl px-4 py-6">
