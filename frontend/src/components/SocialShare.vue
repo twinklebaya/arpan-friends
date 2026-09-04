@@ -1,14 +1,20 @@
 <script setup>
 import { ref } from "vue";
 
-const SHARE_URL = "https://findingarpan.vercel.app/";
-const SHARE_TEXT = "Help us find Arpan, Bhavin and Karan, missing since the Nepal-Tibet flash floods.";
+const props = defineProps({
+  url: { type: String, default: "https://findingarpan.vercel.app/" },
+  text: {
+    type: String,
+    default: "Help us find Arpan, Bhavin and Karan, missing since the Nepal-Tibet flash floods.",
+  },
+  inline: { type: Boolean, default: false },
+});
 
 const copied = ref(false);
 
 function shareWhatsapp() {
   window.open(
-    `https://wa.me/?text=${encodeURIComponent(`${SHARE_TEXT} ${SHARE_URL}`)}`,
+    `https://wa.me/?text=${encodeURIComponent(`${props.text} ${props.url}`)}`,
     "_blank",
     "noopener,noreferrer",
   );
@@ -16,7 +22,7 @@ function shareWhatsapp() {
 
 function shareX() {
   window.open(
-    `https://twitter.com/intent/tweet?text=${encodeURIComponent(SHARE_TEXT)}&url=${encodeURIComponent(SHARE_URL)}`,
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(props.text)}&url=${encodeURIComponent(props.url)}`,
     "_blank",
     "noopener,noreferrer",
   );
@@ -28,7 +34,7 @@ function shareX() {
 // share flow exists.
 async function shareInstagram() {
   try {
-    await navigator.clipboard.writeText(`${SHARE_TEXT} ${SHARE_URL}`);
+    await navigator.clipboard.writeText(`${props.text} ${props.url}`);
     copied.value = true;
     setTimeout(() => (copied.value = false), 2500);
   } catch {
@@ -38,7 +44,13 @@ async function shareInstagram() {
 </script>
 
 <template>
-  <div class="absolute right-4 top-4 flex items-center gap-2 sm:right-6 sm:top-6">
+  <div
+    :class="
+      inline
+        ? 'flex items-center gap-2'
+        : 'absolute right-4 top-4 flex items-center gap-2 sm:right-6 sm:top-6'
+    "
+  >
     <button
       type="button"
       title="Share on WhatsApp"
