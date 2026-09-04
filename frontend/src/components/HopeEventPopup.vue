@@ -1,11 +1,9 @@
 <script setup>
 import { onMounted, ref } from "vue";
 
-const STORAGE_KEY = "hope-event-popup-seen";
 const visible = ref(false);
 
 onMounted(() => {
-  if (localStorage.getItem(STORAGE_KEY) === "1") return;
   setTimeout(() => {
     visible.value = true;
   }, 1500);
@@ -13,7 +11,6 @@ onMounted(() => {
 
 function dismiss() {
   visible.value = false;
-  localStorage.setItem(STORAGE_KEY, "1");
 }
 </script>
 
