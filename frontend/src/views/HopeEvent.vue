@@ -212,7 +212,7 @@ async function submitComment() {
               ></textarea>
               <div class="flex items-center gap-3">
                 <Button type="submit" variant="urgent" :disabled="commentSubmitting">
-                  {{ commentSubmitting ? "Posting..." : "Post comment" }}
+                  {{ commentSubmitting ? "Posting..." : "Post message" }}
                 </Button>
                 <p v-if="commentError" class="text-sm text-red-600">{{ commentError }}</p>
               </div>
