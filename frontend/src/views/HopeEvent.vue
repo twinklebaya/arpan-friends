@@ -192,7 +192,7 @@ async function submitComment() {
 
         <div class="lg:col-span-1">
           <div class="rounded-lg border border-gray-200 bg-gray-50 p-5 lg:sticky lg:top-6">
-            <h2 class="text-lg font-bold uppercase tracking-wide text-gray-900">Comments</h2>
+            <h2 class="text-lg font-bold uppercase tracking-wide text-gray-900">Messages of Hope</h2>
 
             <form class="mt-4 space-y-3" @submit.prevent="submitComment">
               <input
