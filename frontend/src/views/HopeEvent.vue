@@ -51,6 +51,11 @@ async function loadComments() {
   }
 }
 
+async function goToPage(page) {
+  commentPage.value = page;
+  await loadComments();
+}
+
 async function sendLove() {
   if (hasLoved.value || loving.value) return;
   loving.value = true;
@@ -245,7 +250,7 @@ async function submitComment() {
               <button
                 type="button"
                 :disabled="commentPage === 1"
-                @click="commentPage--"
+                @click="goToPage(commentPage - 1)"
                 class="font-medium text-gray-600 hover:text-urgent disabled:cursor-not-allowed disabled:text-gray-300"
               >
                 &larr; Previous
@@ -254,7 +259,7 @@ async function submitComment() {
               <button
                 type="button"
                 :disabled="commentPage === totalCommentPages"
-                @click="commentPage++"
+                @click="goToPage(commentPage + 1)"
                 class="font-medium text-gray-600 hover:text-urgent disabled:cursor-not-allowed disabled:text-gray-300"
               >
                 Next &rarr;
