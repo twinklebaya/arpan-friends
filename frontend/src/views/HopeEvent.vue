@@ -105,11 +105,8 @@ async function submitComment() {
         <router-link to="/" class="text-sm text-gray-400 hover:text-white hover:underline">
           &larr; Back to the search hub
         </router-link>
-        <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-red-400">
-          Global event
-        </p>
-        <h1 class="mt-2 text-2xl font-bold leading-tight sm:text-4xl">
-          Global "Rasuwa Hope and Awareness" Event
+        <h1 class="mt-4 text-2xl font-bold leading-tight sm:text-4xl">
+          Global Event: Rasuwa Hope and Awareness
         </h1>
         <dl class="mt-6 grid grid-cols-1 gap-6 text-sm sm:grid-cols-3">
           <div>

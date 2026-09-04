@@ -35,8 +35,7 @@ function dismiss() {
       >
         &times;
       </button>
-      <p class="pr-4 text-xs font-semibold uppercase tracking-wide text-urgent">Global event</p>
-      <p class="mt-1 pr-4 text-sm font-bold text-gray-900">"Rasuwa Hope and Awareness"</p>
+      <p class="pr-4 text-sm font-bold text-gray-900">Global Event: Rasuwa Hope and Awareness</p>
       <ul class="mt-1 space-y-0.5 text-xs text-gray-600">
         <li>Sun, Sept 6 &middot; 5:00 PM Pacific (USA)</li>
         <li>Sun, Sept 6 &middot; 8:00 PM Eastern (Canada)</li>
