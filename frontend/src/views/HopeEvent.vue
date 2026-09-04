@@ -19,7 +19,7 @@ const commentMessage = ref("");
 const commentSubmitting = ref(false);
 const commentError = ref("");
 
-const COMMENTS_PER_PAGE = 10;
+const COMMENTS_PER_PAGE = 5;
 const commentPage = ref(1);
 const totalCommentPages = computed(() =>
   Math.max(1, Math.ceil(comments.value.length / COMMENTS_PER_PAGE)),
