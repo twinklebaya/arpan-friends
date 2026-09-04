@@ -42,8 +42,8 @@ function dismiss() {
       <p class="mt-1 pr-4 text-sm font-bold text-gray-900">"Rasuwa Hope and Awareness"</p>
       <ul class="mt-1 space-y-0.5 text-xs text-gray-600">
         <li>Sun, Sept 6 &middot; 5:00 PM Pacific (USA)</li>
-        <li>Mon, Sept 7 &middot; 5:30 AM India (IST)</li>
-        <li>Mon, Sept 7 &middot; 5:45 AM Nepal (NPT)</li>
+        <li>Sun, Sept 6 &middot; 8:00 PM Eastern (Canada)</li>
+        <li>Mon, Sept 7 &middot; 8:00 AM Malaysia (MYT)</li>
         <li>Mon, Sept 7 &middot; 10:00 AM Australia Eastern (AEST)</li>
       </ul>
       <p class="mt-2 text-sm text-gray-600">
