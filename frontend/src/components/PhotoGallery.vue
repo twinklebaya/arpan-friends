@@ -131,9 +131,10 @@ function scrollBy(amount) {
               <p class="p-2 text-xs font-medium text-gray-300">{{ photo.caption }}</p>
             </button>
           </div>
-          <p class="mt-3 text-xs text-gray-400">
-            If you recognize any details, person or location from these pictures, or if you have
-            any additional information to share, please reach out to us!
+          <p class="mt-3 text-sm text-gray-400">
+            If you recognize any details, person or location from these pictures or from the
+            missing person list, or if you have any additional information to share, please reach
+            out to us.
           </p>
         </div>
       </div>
