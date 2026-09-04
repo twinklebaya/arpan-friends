@@ -28,7 +28,7 @@ function dismiss() {
   >
     <div
       v-if="visible"
-      class="fixed bottom-4 right-4 z-50 w-[calc(100%-2rem)] max-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow-xl sm:right-6 sm:bottom-6"
+      class="fixed bottom-4 right-4 z-[1000] w-[calc(100%-2rem)] max-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow-xl sm:right-6 sm:bottom-6"
     >
       <button
         type="button"
