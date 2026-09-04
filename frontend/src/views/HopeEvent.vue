@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 
 import { api } from "../lib/api";
 import Button from "../components/ui/Button.vue";
@@ -18,6 +18,16 @@ const commentName = ref("");
 const commentMessage = ref("");
 const commentSubmitting = ref(false);
 const commentError = ref("");
+
+const COMMENTS_PER_PAGE = 10;
+const commentPage = ref(1);
+const totalCommentPages = computed(() =>
+  Math.max(1, Math.ceil(comments.value.length / COMMENTS_PER_PAGE)),
+);
+const pagedComments = computed(() => {
+  const start = (commentPage.value - 1) * COMMENTS_PER_PAGE;
+  return comments.value.slice(start, start + COMMENTS_PER_PAGE);
+});
 
 onMounted(async () => {
   hasLoved.value = localStorage.getItem("hope-event-loved") === "1";
@@ -78,6 +88,7 @@ async function submitComment() {
       message,
     });
     commentMessage.value = "";
+    commentPage.value = 1;
     await loadComments();
   } catch {
     commentError.value = "Couldn't post your comment. Please try again.";
@@ -202,13 +213,13 @@ async function submitComment() {
               </div>
             </form>
 
-            <div class="mt-6 max-h-[32rem] space-y-4 overflow-y-auto pr-1">
+            <div class="mt-6 space-y-4">
               <p v-if="commentsLoading" class="text-sm text-gray-400">Loading comments...</p>
               <p v-else-if="!comments.length" class="text-sm text-gray-400">
                 No comments yet. Be the first to share a message.
               </p>
               <div
-                v-for="c in comments"
+                v-for="c in pagedComments"
                 :key="c.id"
                 class="rounded-lg border border-gray-200 bg-white p-4"
               >
@@ -220,6 +231,29 @@ async function submitComment() {
                 </div>
                 <p class="mt-1 whitespace-pre-wrap text-sm text-gray-700">{{ c.message }}</p>
               </div>
+            </div>
+
+            <div
+              v-if="comments.length > COMMENTS_PER_PAGE"
+              class="mt-4 flex items-center justify-between text-sm"
+            >
+              <button
+                type="button"
+                :disabled="commentPage === 1"
+                @click="commentPage--"
+                class="font-medium text-gray-600 hover:text-urgent disabled:cursor-not-allowed disabled:text-gray-300"
+              >
+                &larr; Previous
+              </button>
+              <span class="text-gray-500">Page {{ commentPage }} of {{ totalCommentPages }}</span>
+              <button
+                type="button"
+                :disabled="commentPage === totalCommentPages"
+                @click="commentPage++"
+                class="font-medium text-gray-600 hover:text-urgent disabled:cursor-not-allowed disabled:text-gray-300"
+              >
+                Next &rarr;
+              </button>
             </div>
           </div>
         </div>
