@@ -194,6 +194,17 @@ async function submitComment() {
             which they have managed to come back to their lives, so that it can provide clarity to
             others who have many more questions than answers.
           </p>
+
+          <div class="mt-8 border-t border-gray-200 pt-6">
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-400">Speakers</h2>
+            <div class="mt-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <p class="font-semibold text-gray-900">Those who survived</p>
+              <p class="mt-1 text-sm text-gray-600">
+                Survivors of the floods will share their own accounts of what happened and how
+                they made it back safely. Names will be announced as they are confirmed.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div class="lg:col-span-1">
