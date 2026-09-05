@@ -182,12 +182,8 @@ async function submitComment() {
           <div>
             <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-400">Speakers</h2>
             <div class="mt-3 space-y-3">
-              <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                <p class="font-semibold text-gray-900">Representative of Kailash Journeys</p>
-              </div>
-              <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
-                <p class="font-semibold text-gray-900">Office of Ro Khanna, Member of US Congress</p>
-              </div>
+              <p class="font-semibold text-gray-900">Representative of Kailash Journeys</p>
+              <p class="font-semibold text-gray-900">Office of Ro Khanna, Member of US Congress</p>
               <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
                 <p class="font-semibold text-gray-900">Special guests: Flash flood survivors (TBA)</p>
                 <p class="mt-1 text-sm text-gray-600">
