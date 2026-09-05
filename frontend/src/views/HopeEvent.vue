@@ -119,7 +119,7 @@ async function submitComment() {
         <h1 class="mt-2 text-2xl font-bold leading-tight sm:text-4xl">
           Global Event: Rasuwa Hope and Awareness
         </h1>
-        <dl class="mt-6 grid grid-cols-1 gap-6 text-sm sm:grid-cols-3">
+        <dl class="mt-6 grid grid-cols-1 gap-6 text-sm sm:grid-cols-2">
           <div>
             <dt class="font-semibold uppercase tracking-wide text-gray-400">When</dt>
             <dd class="mt-1 space-y-1 text-gray-200">
@@ -142,15 +142,6 @@ async function submitComment() {
               >
                 Register to attend &rarr;
               </a>
-            </dd>
-          </div>
-          <div>
-            <dt class="font-semibold uppercase tracking-wide text-gray-400">Speakers</dt>
-            <dd class="mt-1 space-y-1 text-gray-200">
-              <p>Representative of Kailash Journeys</p>
-              <p>Office of Ro Khanna, Member of US Congress</p>
-              <p>Special guests: Flash flood survivors (TBA)</p>
-              <p>And more to come</p>
             </dd>
           </div>
         </dl>
