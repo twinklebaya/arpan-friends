@@ -149,16 +149,6 @@ async function submitComment() {
             </dd>
           </div>
         </dl>
-        <div class="mt-6 rounded-lg border border-gray-700 bg-gray-800 p-4 text-sm text-gray-300">
-          <a
-            href="https://luma.com/y5ef35yf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-md bg-urgent px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
-          >
-            Register to attend &rarr;
-          </a>
-        </div>
 
         <div class="mt-6 flex flex-wrap items-center gap-4">
           <button
