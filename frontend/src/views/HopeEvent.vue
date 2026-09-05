@@ -146,7 +146,12 @@ async function submitComment() {
           </div>
           <div>
             <dt class="font-semibold uppercase tracking-wide text-gray-400">Speakers</dt>
-            <dd class="mt-1 text-gray-200">Those who survived</dd>
+            <dd class="mt-1 space-y-1 text-gray-200">
+              <p>Representative of Kailash Journeys</p>
+              <p>Office of Ro Khanna, Member of US Congress</p>
+              <p>Special guests: Flash flood survivors (TBA)</p>
+              <p>And more to come</p>
+            </dd>
           </div>
         </dl>
 
@@ -176,12 +181,21 @@ async function submitComment() {
         <div class="lg:col-span-2">
           <div>
             <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-400">Speakers</h2>
-            <div class="mt-3 rounded-lg border border-gray-200 bg-gray-50 p-4">
-              <p class="font-semibold text-gray-900">Those who survived</p>
-              <p class="mt-1 text-sm text-gray-600">
-                Survivors of the floods will share their own accounts of what happened and how
-                they made it back safely. Names will be announced as they are confirmed.
-              </p>
+            <div class="mt-3 space-y-3">
+              <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <p class="font-semibold text-gray-900">Representative of Kailash Journeys</p>
+              </div>
+              <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <p class="font-semibold text-gray-900">Office of Ro Khanna, Member of US Congress</p>
+              </div>
+              <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                <p class="font-semibold text-gray-900">Special guests: Flash flood survivors (TBA)</p>
+                <p class="mt-1 text-sm text-gray-600">
+                  Survivors of the floods will share their own accounts of what happened and how
+                  they made it back safely. Names will be announced as they are confirmed.
+                </p>
+              </div>
+              <p class="text-sm italic text-gray-500">And more to come.</p>
             </div>
           </div>
 
