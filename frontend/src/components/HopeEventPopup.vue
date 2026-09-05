@@ -44,7 +44,7 @@ function dismiss() {
         <li>Mon, Sept 7 &middot; 10:00 AM Australia Eastern (AEST)</li>
       </ul>
       <p class="mt-2 text-sm text-gray-600">
-        Virtual and in person from the SF Bay Area. Hear from families who found their way back.
+        Virtual, hosted from the SF Bay Area. Hear from families who found their way back.
       </p>
       <div class="mt-3 flex items-center gap-4">
         <router-link

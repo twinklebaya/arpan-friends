@@ -114,7 +114,7 @@ async function submitComment() {
           &larr; Back to the search hub
         </router-link>
         <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-red-400">
-          Virtual and In-person
+          Virtual
         </p>
         <h1 class="mt-2 text-2xl font-bold leading-tight sm:text-4xl">
           Global Event: Rasuwa Hope and Awareness
