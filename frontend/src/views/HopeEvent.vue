@@ -146,7 +146,7 @@ async function submitComment() {
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 rounded-md bg-urgent px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
           >
-            Register on Luma &rarr;
+            Register to attend &rarr;
           </a>
         </div>
 
