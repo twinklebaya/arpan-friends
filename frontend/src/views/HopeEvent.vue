@@ -131,7 +131,7 @@ async function submitComment() {
             </dd>
           </div>
           <div>
-            <dt class="font-semibold uppercase tracking-wide text-gray-400">Where</dt>
+            <dt class="font-semibold uppercase tracking-wide text-gray-400">Hosted From</dt>
             <dd class="mt-1 text-gray-200">San Francisco Bay Area</dd>
           </div>
           <div>
