@@ -135,30 +135,16 @@ async function submitComment() {
             <dd class="mt-1 text-gray-200">San Francisco Bay Area</dd>
           </div>
           <div>
-            <dt class="font-semibold uppercase tracking-wide text-gray-400">Register Now</dt>
-            <dd class="mt-1">
-              <a
-                href="https://luma.com/y5ef35yf"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="font-semibold text-red-400 hover:underline"
-              >
-                Register on Luma &rarr;
-              </a>
-            </dd>
+            <dt class="font-semibold uppercase tracking-wide text-gray-400">Speakers</dt>
+            <dd class="mt-1 text-gray-200">Those who survived</dd>
           </div>
         </dl>
         <div class="mt-6 rounded-lg border border-gray-700 bg-gray-800 p-4 text-sm text-gray-300">
-          <p>
-            <span class="font-semibold text-white">Meeting link:</span>
-            will be posted here shortly &mdash; check back closer to the event. Register below to
-            have it, and any updates, sent to you directly.
-          </p>
           <a
             href="https://luma.com/y5ef35yf"
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-3 inline-flex items-center gap-2 rounded-md bg-urgent px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
+            class="inline-flex items-center gap-2 rounded-md bg-urgent px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
           >
             Register on Luma &rarr;
           </a>
