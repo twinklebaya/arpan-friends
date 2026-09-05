@@ -131,10 +131,6 @@ async function submitComment() {
             </dd>
           </div>
           <div>
-            <dt class="font-semibold uppercase tracking-wide text-gray-400">Speakers</dt>
-            <dd class="mt-1 text-gray-200">Those who survived</dd>
-          </div>
-          <div>
             <dt class="font-semibold uppercase tracking-wide text-gray-400">Hosted From</dt>
             <dd class="mt-1 text-gray-200">
               <p>San Francisco Bay Area</p>
@@ -147,6 +143,10 @@ async function submitComment() {
                 Register to attend &rarr;
               </a>
             </dd>
+          </div>
+          <div>
+            <dt class="font-semibold uppercase tracking-wide text-gray-400">Speakers</dt>
+            <dd class="mt-1 text-gray-200">Those who survived</dd>
           </div>
         </dl>
 
