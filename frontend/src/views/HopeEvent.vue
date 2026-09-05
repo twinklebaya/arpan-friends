@@ -137,12 +137,12 @@ async function submitComment() {
           <div>
             <dt class="font-semibold uppercase tracking-wide text-gray-400">Hosted From</dt>
             <dd class="mt-1 text-gray-200">
-              San Francisco Bay Area
+              <p>San Francisco Bay Area</p>
               <a
                 href="https://luma.com/y5ef35yf"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="mt-1 block font-semibold text-red-400 hover:underline"
+                class="mt-2 inline-flex items-center gap-2 rounded-md bg-urgent px-4 py-2 text-sm font-semibold text-white hover:bg-red-800"
               >
                 Register to attend &rarr;
               </a>
