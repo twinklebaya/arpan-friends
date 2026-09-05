@@ -105,7 +105,10 @@ async function submitComment() {
 
 <template>
   <div class="bg-white">
-    <section class="bg-gray-900 text-white">
+    <section
+      class="bg-gray-900 bg-cover bg-center text-white"
+      style="background-image: url('/photos/hope-event-header-bg.png')"
+    >
       <div class="mx-auto max-w-7xl px-4 py-10 sm:py-14">
         <router-link to="/" class="text-sm text-gray-400 hover:text-white hover:underline">
           &larr; Back to the search hub
